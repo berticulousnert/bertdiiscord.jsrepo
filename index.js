@@ -20,6 +20,7 @@ bot.onBanRemove
 bot.onGuildLeave()
 bot.onGuildJoin()
 
+
 //varables
 bot.variables({
     prefix: ".",
@@ -350,14 +351,14 @@ bot.command({
 
 
 
-bot.botJoinCommand({
+bot.JoinCommand({
   channel: "884959027962982465",
   code: `
 Ive joined $serverName!
 `
 })
 
-bot.botLeaveCommand({
+bot.LeaveCommand({
   channel: "884959027962982466",
   code: `
 I have left $serverName!
