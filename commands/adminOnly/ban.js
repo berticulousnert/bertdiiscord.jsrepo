@@ -1,17 +1,17 @@
 module.exports = {
      name:"ban",
      code: `$deleteIn[5s]
-    $color[RANDOM] 
-    $author[Banned successfully]
-    $addField[About:;
+    $color[1;RANDOM] 
+    $author[1;Banned successfully]
+    $addField[1;About:;
     Reason:
     > $replaceText[$replaceText[$checkCondition[$messageSlice[1]==];true;A reason wasn't provided.];false;$messageSlice[1]]
     Date:
     > $day $month $year
     ]
-    $addField[User information;
+    $addField[1;User information;
     $userTag[$findUser[$message[1]]] - $findUser[$message[1]]]
-    $addField[Moderator;
+    $addField[1;Moderator;
     $userTag - $authorID]
     $thumbnail[$userAvatar[$findUser[$message[1]]]]
     $ban[$findUser[$message[1]];$userTag: $replaceText[$replaceText[$checkCondition[$messageSlice[1]==];true;A reason wasn't provided.];false;$messageSlice[1]];7]

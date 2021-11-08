@@ -1,7 +1,7 @@
 module.exports = {
   name: "ig",
   code: `$title[Instagram info] 
-  $description[ Username: $jsonRequest[https://api.popcat.xyz/instagram?user=$message;username;API endpoint is currently unavaliable]
+  $description[1; Username: $jsonRequest[https://api.popcat.xyz/instagram?user=$message;username;API endpoint is currently unavaliable]
 
    Full name: $jsonRequest[https://api.popcat.xyz/instagram?user=$message;full_name;API endpoint is currently unavaliable]
 
@@ -19,7 +19,7 @@ module.exports = {
 
       Verified:  $jsonRequest[https://api.popcat.xyz/instagram?user=$message;verified;API endpoint is currently unavaliable]
 
-        $thumbnail[$jsonRequest[https://api.popcat.xyz/instagram?user=$message;profile_pic;API endpoint is currently unavaliable]]]
+        $thumbnail[1;$jsonRequest[https://api.popcat.xyz/instagram?user=$message;profile_pic;API endpoint is currently unavaliable]]]
         
-        $color[RANDOM] $argsCheck[1;Send a instagram username]`
+        $color[1;RANDOM] $argsCheck[1;Send a instagram username]`
 }

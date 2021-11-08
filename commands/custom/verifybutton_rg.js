@@ -1,8 +1,8 @@
 module.exports = {
-  type: 'interactionCommand',
-  name: "click",
+  type: 'interaction',
+  name: "verify",
   prototype: "button",
-  code: `$interactionReply[You have been verified!;;;64;4]
+  code: `$interactionReply[You have been verified!;;;;yes]
   $giveRole[$authorID;768956123079770113;]
   $deleteIn[5] $onlyIf[$getUserVar[command;$commandName]!=disabled;Command disabled]`
 }

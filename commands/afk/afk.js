@@ -6,7 +6,7 @@ module.exports = ({
   $setUserVar[afk;y;$authorID]
   $setUserVar[afkwhy;$get[why];$authorID]
   $setUserVar[afkts;$get[ts];$authorID]
-  $sendMessage[<@$authorID> {title:I set your AFK} {description:・Reason\n<:Re:885213737420722186>$get[why]};no]
+  $sendMessage[<@$authorID> {newEmbed: {title:I set your AFK} {description:・Reason\n<:Re:885213737420722186>$get[why]}};no]
   $if[$message==]
   $let[why;AFK]
   $else

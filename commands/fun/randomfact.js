@@ -1,5 +1,5 @@
 module.exports = {
   name: "random fact",
   aliases: ['rf'],
-code: `$title[Random Fact] $description[$jsonRequest[https://api.popcat.xyz/fact;fact;API endpoint is currently unavaliable]] $color[RANDOM]`
+code: `$title[1;Random Fact] $description[1;$jsonRequest[https://api.popcat.xyz/fact;fact;API endpoint is currently unavaliable]] $color[1;RANDOM]`
 }

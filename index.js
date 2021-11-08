@@ -162,10 +162,10 @@ bot.onMessageUpdate();
 bot.command({
  name: "editsnipe",
  aliases: ["esnipe"],
- code: `$author[$username[$getChannelVar[msgEditorID]]#$discriminator[$getChannelVar[msgEditorID]];$userAvatar[$getChannelVar[msgEditorID]]]
-$description[$getChannelVar[esnipeOldMsg]]
+ code: `$author[1;$username[$getChannelVar[msgEditorID]]#$discriminator[$getChannelVar[msgEditorID]];$userAvatar[$getChannelVar[msgEditorID]]]
+$description[1;$getChannelVar[esnipeOldMsg]]
 $addTimestamp
-$color[RANDOM]
+$color[1;RANDOM]
 $onlyIf[$getChannelVar[esnipeOldMsg]!=undefinied;{description: there is nothing to snipe}{color: RED}]
 $onlyIf[$getChannelVar[msgEditorID]!=undefinied;{description: there is nothing to snipe}{color: RED}]
 $suppressErrors[There is nothing to snipe]`
@@ -175,12 +175,12 @@ $suppressErrors[There is nothing to snipe]`
 
 bot.command({
 name: "quote",
-code: ` $author[$userTag[$getMessage[$replaceText[$replaceText[$checkContains[$message;https://discord.com/channels/;https://ptb.discord.com/channels/];true;$splitText[6]];false;$mentionedChannels[1;yes]];$replaceText[$replaceText[$checkContains[$message;https://discord.com/channels/;https://ptb.discord.com/channels/];true;$splitText[7]];false;$noMentionMessage];userID]];$userAvatar[$getMessage[$replaceText[$replaceText[$checkContains[$message;https://discord.com/channels/;https://ptb.discord.com/channels/];true;$splitText[6]];false;$mentionedChannels[1;yes]];$replaceText[$replaceText[$checkContains[$message;https://discord.com/channels/;https://ptb.discord.com/channels/];true;$splitText[7]];false;$noMentionMessage];userID]]]
-$description[$getMessage[$replaceText[$replaceText[$checkContains[$message;https://discord.com/channels/;https://ptb.discord.com/channels/];true;$splitText[6]];false;$mentionedChannels[1;yes]];$replaceText[$replaceText[$checkContains[$message;https://discord.com/channels/;https://ptb.discord.com/channels/];true;$splitText[7]];false;$noMentionMessage];content]
+code: ` $author[1;$userTag[$getMessage[$replaceText[$replaceText[$checkContains[$message;https://discord.com/channels/;https://ptb.discord.com/channels/];true;$splitText[6]];false;$mentionedChannels[1;yes]];$replaceText[$replaceText[$checkContains[$message;https://discord.com/channels/;https://ptb.discord.com/channels/];true;$splitText[7]];false;$noMentionMessage];userID]];$userAvatar[$getMessage[$replaceText[$replaceText[$checkContains[$message;https://discord.com/channels/;https://ptb.discord.com/channels/];true;$splitText[6]];false;$mentionedChannels[1;yes]];$replaceText[$replaceText[$checkContains[$message;https://discord.com/channels/;https://ptb.discord.com/channels/];true;$splitText[7]];false;$noMentionMessage];userID]]]
+$description[1;$getMessage[$replaceText[$replaceText[$checkContains[$message;https://discord.com/channels/;https://ptb.discord.com/channels/];true;$splitText[6]];false;$mentionedChannels[1;yes]];$replaceText[$replaceText[$checkContains[$message;https://discord.com/channels/;https://ptb.discord.com/channels/];true;$splitText[7]];false;$noMentionMessage];content]
  
 [Jump to message\\]($replaceText[$replaceText[$checkContains[$message;https://discord.com/channels/;https://ptb.discord.com/channels/];true;$message];false;https://discord.com/channels/$guildID/$mentionedChannels[1;yes]/$noMentionMessage])
 $textSplit[$message;/]
-$color[RANDOM]
+$color[1;RANDOM]
 $suppressErrors[**⛔ Could not find message**]`
 })
 
@@ -226,21 +226,21 @@ bot.command({
   
   $if[$message[1]==remove]
   $setServerVar[modlogs;0]
-  $color[RANDOM]
+  $color[1;RANDOM]
   $channelSendMessage[$getServerVar[modlogs];<@$authorID> - Mod Logs Channel was removed by $username #$discriminator[$authorID].]
   $suppressErrors
  
   $else
   $if[$channelExists[$findServerChannel[$message]]==true]
   $setServerVar[modlogs;$findServerChannel[$message]]
-  $description[<#$findServerChannel[$message]> set as Mod Logs Channel from <#$channelCategoryID[$findServerChannel[$messag]]> Category.]
-  $color[RANDOM]
+  $description[1;<#$findServerChannel[$message]> set as Mod Logs Channel from <#$channelCategoryID[$findServerChannel[$messag]]> Category.]
+  $color[1;RANDOM]
   
   $endif
   $endif
   
-  $argsCheck[>1;{title:Missing Arguments}{description:$getServerVar[prefix]s-modlogs <#channel/ID/remove>}{color:RED}]
-  $onlyPerms[manageserver;{title:Missing Permissions}{description:Missing Manage Server permission}{color:RED}]`
+  $argsCheck[>1;{newEmbed: {title:Missing Arguments}{description:$getServerVar[prefix]s-modlogs <#channel/ID/remove>}{color:RED}}]
+  $onlyPerms[manageserver;{newEmbed: {title:Missing Permissions}{description:Missing Manage Server permission}{color:RED}}]`
 
 })
 
@@ -261,11 +261,6 @@ bot.onGuildLeave({
 I have left $serverName!
 `
 })
-
-
-
-
-
 
 
 
@@ -328,7 +323,7 @@ bot.channelDeleteCommand({
  channel: "$getVar[modlogs]",
  code: `
 
-$sendMessage[{title:RAID BOT DETECT!} {description:$usertag[$getauditlogs[1;everyone;CHANNEL_DELETE;$guildid;{executor.id}]] has been banned because deleted 2 channel in less than 3 second };no]
+$sendMessage[{newEmbed: {title:RAID BOT DETECT!} {description:$usertag[$getauditlogs[1;everyone;CHANNEL_DELETE;$guildid;{executor.id}]] has been banned because deleted 2 channel in less than 3 second }};no]
 
 $ban[$getauditlogs[1;everyone;CHANNEL_DELETE;$guildid;{executor.id}];raid bot]
 
@@ -356,7 +351,7 @@ bot.channelDeleteCommand({
  channel: "$getVar[modlogs]",
  code: `
 
-$sendMessage[{title:RAID BOT DETECT!} {description:$usertag[$getauditlogs[1;everyone;CHANNEL_CREATE;$guildid;{executor.id}]] has been banned because deleted 2 channel in less than 3 second };no]
+$sendMessage[{newEmbed: {title:RAID BOT DETECT!} {description:$usertag[$getauditlogs[1;everyone;CHANNEL_CREATE;$guildid;{executor.id}]] has been banned because deleted 2 channel in less than 3 second }};no]
 
 $ban[$getauditlogs[1;everyone;CHANNEL_CREATE;$guildid;{executor.id}];raid bot]
 
