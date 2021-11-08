@@ -13,8 +13,8 @@ bot.onMessage()
 bot.onInteractionCreate()
 bot.onMessageDelete()
 bot.onJoin()
-bot.loadCommands(__dirname + '/commands')
-bot.loadCommands(__dirname + '/custom')
+LoadCommands.load(__dirname,'./commands',)
+LoadCommands.load(__dirname,'./custom',)
 bot.onBanAdd
 bot.onBanRemove
 bot.onGuildLeave()
