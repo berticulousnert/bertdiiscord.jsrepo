@@ -126,7 +126,8 @@ bot.variables({
     muted: "",
     bping: "0",
     wsping: "0",
-    dbping: "0"
+    dbping: "0",
+    c: "0"
     })
 
 //Command Example
@@ -448,11 +449,10 @@ $getauditlogs[1;everyone;CHANNEL_DELETE;$guildid;{executor.id}] $suppressErrors
  })
 
 bot.loopCommand({
-code: ``,
+code: `$resetUserVar[c]`,
  channel: "$getVar[modlogs]",
  every: 300,
  executeOnStartup: true})
-
 
 
 bot.onChannelDelete()
@@ -477,9 +477,7 @@ $getauditlogs[1;everyone;CHANNEL_CREATE;$guildid;{executor.id}] $suppressErrors
  })
 
 bot.loopCommand({
-code: ``,
+code: `$resetUserVar[c]`,
  channel: "$getServerVar[modlogs]",
  every: 300,
  executeOnStartup: true})
-
-module.exports.bot = bot
