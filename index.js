@@ -5,7 +5,7 @@ const bot = new aoijs.Bot({
     "token"]
 , //Discord Bot Token
   prefix: ['$getServerVar[prefix]', '<@!$clientID>', '<@$clientID>', '.'], 
-  intents: all
+  intents: "all"
 })
 
 //Events
