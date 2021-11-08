@@ -351,14 +351,14 @@ bot.command({
 
 
 
-bot.JoinCommand({
+bot.onGuildJoin({
   channel: "884959027962982465",
   code: `
 Ive joined $serverName!
 `
 })
 
-bot.LeaveCommand({
+bot.onGuildLeave({
   channel: "884959027962982466",
   code: `
 I have left $serverName!
