@@ -6,6 +6,6 @@ $forEachGuildChannel[unlockall]
 All channels have been unlocked.
 $onlyPerms[manageserver;{description:**You are missing \`MANAGE_SERVER\` perm!**}{color:ff0000}{delete:60s}]
 $onlyBotPerms[manageserver;embedlinks;externalemojis;addreactions;**Error**
-\`\`\`] $blackListIDs[704134457812320306;Know ur self]
+\`\`\`] 
 `
 });

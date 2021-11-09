@@ -2,7 +2,7 @@ module.exports = {
   type: 'joinCommand',
   channel: "768969037689389090",
   code:`$title[]
-$description[・**Welcome!**
+$description[1;・**Welcome!**
 <:Re:885213737420722186>Hello __[$username](https://discord.gg/rob)__
 
 
@@ -11,7 +11,7 @@ $description[・**Welcome!**
 > Please check <#777782685522984962> to let us know what things you'd like to get pinged for.
 ]
 
-$thumbnail[$authorAvatar]
-$color[#BAE68D]
+$thumbnail[1;$authorAvatar]
+$color[1;#BAE68D]
 $onlyForServers[768927312178577449;] $onlyIf[$getUserVar[command;$commandName]!=disabled;Command disabled] `
 } 

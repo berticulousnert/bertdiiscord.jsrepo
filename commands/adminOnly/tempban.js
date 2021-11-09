@@ -13,7 +13,6 @@ module.exports = {
  $onlyIf[$mentioned[1]!=;\`\`$getServerVar[prefix]tempban <member> [duration]
          ^^^^^^^^
 member is a required argument that is missing.\`\`]
-$blackListIDs[704134457812320306;Know ur self] $onlyIf[$getGlobalUserVar[Blacklist;$authorID]==false;**⛔ You are blacklisted**] 
 $if[$serverChannelExists[$getServerVar[modlogs]]==true]
 $channelSendMessage[$getServerVar[modlogs];<@$authorID>{newEmbed: {title:Mod Logs}{field:Action:tempBan}{field:Moderator:$username}{field:User:$username[$findUser[$message[1]]]#$discriminator[$findUser[$message[1]]]\n(\`$findUser[$message[1]]\`)}{thumbnail:$userAvatar[$findUser[$message[1]]]}{color:RANDOM}}]
 $endif 

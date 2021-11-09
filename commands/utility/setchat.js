@@ -7,5 +7,5 @@ module.exports = {
   $resetServerVar[chatbotset]
   $endif
   $onlyIf[$mentionedChannels[1]!=;You have to mention a channel]
-  $onlyPerms[admin;Missing permission \`ADMINISTRATOR\`] $blackListIDs[704134457812320306;Know ur self] $onlyIf[$getGlobalUserVar[Blacklist;$authorID]==false;**⛔ You are blacklisted**] $onlyIf[$getUserVar[command;$commandName]!=disabled;Command disabled]`
+  $onlyPerms[admin;Missing permission \`ADMINISTRATOR\`] $blackListIDs[704134457812320306;Know ur self] $onlyIf[$getUserVar[command;$commandName]!=disabled;Command disabled]`
 }

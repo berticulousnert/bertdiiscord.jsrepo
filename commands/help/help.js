@@ -8,7 +8,7 @@ $title[1;╭•Help] $description[1;**Main Command** \`\`$getServerVar[prefix]He
 
 **Extra info** \n to get to the commands scroll down a bit and this is not the finish product this can change at any time.] $color[1;#8700ff] $footer[1;Enjoy!;$authorAvatar]
 
-$blackListIDs[704134457812320306;Know ur self] $onlyIf[$getGlobalUserVar[Blacklist;$authorID]==false;**⛔ You are blacklisted**] $onlyIf[$getUserVar[command;$commandName]!=disabled;Command disabled]`
+$onlyIf[$getUserVar[command;$commandName]!=disabled;Command disabled]`
 
 }
 //nop

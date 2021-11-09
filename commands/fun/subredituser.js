@@ -1,7 +1,7 @@
 module.exports = {
   name: "sr",
-  code: `$title[Subredits]
-  $description[ Name **$jsonRequest[https://api.popcat.xyz/subreddit/$message;name;API endpoint is currently unavaliable]**
+  code: `$title[1;Subredits]
+  $description[1; Name **$jsonRequest[https://api.popcat.xyz/subreddit/$message;name;API endpoint is currently unavaliable]**
 
  Title **$jsonRequest[https://api.popcat.xyz/subreddit/$message;title;API endpoint is currently unavaliable]**
 
@@ -18,8 +18,8 @@ module.exports = {
      **$jsonRequest[https://api.popcat.xyz/subreddit/$message;over_18;API endpoint is currently unavaliable]**
 
      Url **$jsonRequest[https://api.popcat.xyz/subreddit/$message;url;API endpoint is currently unavaliable]**
-$footer[Ea sports]
-    $color[RANDOM] 
+$footer[1;Ea sports]
+    $color[1;RANDOM] 
 
   `
 }
