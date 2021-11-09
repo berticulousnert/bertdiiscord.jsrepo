@@ -10,6 +10,7 @@ const bot = new aoijs.Bot({
 
 //Events
 bot.onInteractionCreate()
+bot.onMessage()
 bot.onMessageDelete()
 bot.onJoin()
 // bot.LoadCommands.load(__dirname,'./commands',)
