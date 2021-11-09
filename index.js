@@ -9,7 +9,6 @@ const bot = new aoijs.Bot({
 })
 
 //Events
-bot.onMessage()
 bot.onInteractionCreate()
 bot.onMessageDelete()
 bot.onJoin()
