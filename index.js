@@ -145,7 +145,21 @@ bot.readyCommand({
 })
 
 bot.status({
-    text: "Bert v2 coming soon",
+    text: "Bert optimied",
+    type: "WATCHING",
+    status: "idle",
+    time: 12
+  })
+
+  bot.status({
+    text: "my people",
+    type: "WATCHING",
+    status: "idle",
+    time: 12
+  })
+
+  bot.status({
+    text: "https://www.bert-bot.tk/#",
     type: "WATCHING",
     status: "idle",
     time: 12
@@ -154,10 +168,12 @@ bot.status({
 
 
 
+
+
 bot.updateCommand({
  channel: "$channelID",
  code: `$setChannelVar[msgEditorID;$authorID]
- $setChannelVar[esnipeOldMsg;$oldMessage]`
+ $setChannelVar[esnipeOldMsg;$djseval[d.data.oldm.content;yes]]`
 })
 bot.onMessageUpdate();
  

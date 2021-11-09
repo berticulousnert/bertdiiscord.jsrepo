@@ -18,5 +18,5 @@ $color[1;$userRoleColor[$getChannelVar[author_snipe;$mentionedChannels[1;yes]]]
 $onlyPerms[managemessages;You do not have the perms to use this command]
 $endif 
 $addTimestamp
-$footer[$serverName | #$getChannelVar[channel_snipe;$mentionedChannels[1;yes]]] $onlyIf[$getUserVar[command;$commandName]!=disabled;Command disabled]`
+$footer[1;$serverName | #$getChannelVar[channel_snipe;$mentionedChannels[1;yes]]] $onlyIf[$getUserVar[command;$commandName]!=disabled;Command disabled]`
  }]
