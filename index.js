@@ -132,11 +132,6 @@ bot.variables({
     c: "0"
     })
 
-//Command Example
-bot.command({
-name: "ping",
-code: `Pong! \`$ping\`ms`
-})
 
 //Ready Event
 bot.readyCommand({
@@ -277,61 +272,5 @@ bot.onGuildLeave({
   channel: "884959027962982466",
   code: `
 I have left $serverName!
-`
-})
-
-
-
-bot.command({
-  name: "blacklist",
-  code: `$setGlobalUserVar[Blacklist;true;$mentioned[1]]
-**$username[$mentioned[1]]#$discriminator[$mentioned[1]] you are blacklisted now**
-$onlyIf[$mentioned[1]!=;You must mention someone]
-$onlyIf[$mentioned[1]!=$authorID;**⛔ You can't blacklist yourself**]
-$onlyForIDs[746758742871244811;769252161493663755;**⛔ Only the owner can use this command**]
-$onlyIf[$getGlobalUserVar[Blacklist;$authorID]==false;**⛔ You are blacklisted**]`
-})
-
-
-bot.command({
-  name: "whitelist",
-  code: `$setGlobalUserVar[Blacklist;false;$mentioned[1]]
-**$username[$mentioned[1]]#$discriminator[$mentioned[1]] ✅ You are no longer on the blacklist**
-$onlyIf[$mentioned[1]!=;You must mention someone]
-$onlyIf[$mentioned[1]!=$authorID;**⛔ You can't blacklist yourself, so you can't unblacklist yourself**]
-$onlyForIDs[746758742871244811;769252161493663755;**⛔ You are not the owner**]
-$onlyIf[$getGlobalUserVar[Blacklist;$authorID]==false;**⛔ You are blacklisted**]`
-})
-
-
-
-
-
-bot.timeoutCommand({
-  code: `
- $sendDM[$timeoutData[userID];]
- $setUserVar[premium;false;$timeoutData[userID]]`
-})
-
-
-
-
-
-bot.command({
-  name: "nuke",
-  code: `
-$loop[1;sendMessage]
-$deleteChannels[$channelID]
-$cloneChannel[$channelID]
-$onlyPerms[admin;{title:Missing Permissions}{color:RANDOM}{description:You don't have \`Admin\` permissions to use this command}]
- `
-})
-
-bot.awaitedCommand({
-  name: "sendMessage",
-  code: `
-$wait[1s]
-$channelSendMessage[$channelID[$channelName];{description: **This Channel Has Been Nuke By** <@$authorID> $customEmoji[yes]}{image:https://media1.tenor.com/images/2e50750a1356ee2cf828090cbb864634/tenor.gif?itemid=4464831}{color:RANDOM}]
-
 `
 })
