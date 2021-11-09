@@ -19,7 +19,7 @@ bot.onBanAdd
 bot.onBanRemove
 bot.onGuildLeave()
 bot.onGuildJoin()
-const loader = new Aoijs.LoadCommands(bot)
+const loader = new aoijs.LoadCommands(bot)
 loader.load(bot.cmd, "./commands/")
 
 
