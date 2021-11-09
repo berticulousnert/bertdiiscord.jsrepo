@@ -8,13 +8,13 @@ $setChannelVar[channel_snipe;$channelName[$channelUsed]]`
 },{
  name: "snipe",
  code: `
-$author[$userTag[$getChannelVar[author_snipe;$mentionedChannels[1;yes]]];$getChannelVar[icon_snipe;$mentionedChannels[1;yes]];https://ilikeblue.com]
-$description[$getChannelVar[message_snipe;$mentionedChannels[1;yes]]]
+$author[1;$userTag[$getChannelVar[author_snipe;$mentionedChannels[1;yes]]];$getChannelVar[icon_snipe;$mentionedChannels[1;yes]];https://ilikeblue.com]
+$description[1;$getChannelVar[message_snipe;$mentionedChannels[1;yes]]]
 $if[$userRoleColor[$getChannelVar[author_snipe;$mentionedChannels[1;yes]]]==#000000]
-$color[00FF89]
+$color[1;#00FF89]
 $onlyForRoles[$getServerVar[snipeperms];You do not have the perms to use this command]
 $else
-$color[$userRoleColor[$getChannelVar[author_snipe;$mentionedChannels[1;yes]]]
+$color[1;$userRoleColor[$getChannelVar[author_snipe;$mentionedChannels[1;yes]]]
 $onlyPerms[managemessages;You do not have the perms to use this command]
 $endif 
 $addTimestamp

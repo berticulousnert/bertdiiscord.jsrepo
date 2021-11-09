@@ -1,10 +1,10 @@
 module.exports = ({
 name:"steal",
 code:`
-$title[Emoji Added]
-$color[RANDOM]
-$description[Successfully add emoji $addEmoji[https://cdn.discordapp.com/emojis/$findNumbers[$message[1]];$message[2];yes] with name $message[2]]
-$footer[By $username[$authorID]]
+$title[1;Emoji Added]
+$color[1;RANDOM]
+$description[1;Successfully add emoji $addEmoji[https://cdn.discordapp.com/emojis/$findNumbers[$message[1]];$message[2];yes] with name $message[2]]
+$footer[1;By $username[$authorID]]
 $addTimestamp
 $suppressErrors[❌Not a valid emoji or an emoji ID, Correct usage Steal (emoji) (name)]
 $onlyIf[$charCount[$message[2]]>=2;❌Your emoji name must be longer than two characters]

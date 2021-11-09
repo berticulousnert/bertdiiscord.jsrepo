@@ -1,7 +1,7 @@
   module.exports = {
   type: 'joinCommand',
   channel: "$getServerVar[setwelcome]",
-  code: `$title[ Welcome $username $getServerVar[jt]]
+  code: `$title[Welcome $username $getServerVar[jt]]
   $description[$getServerVar[jd]]
   $footer[$getServerVar[jf]]
   $color[$getServerVar[jc]]

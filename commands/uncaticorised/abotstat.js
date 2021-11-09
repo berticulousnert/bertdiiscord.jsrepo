@@ -1,6 +1,6 @@
 module.exports = ({
 code: `  
-$description[
+$description[1;
 \`\`\`Bot Status-
 ▪︎ Ping: $ping ms
 ▪︎ RAM Usage: $ram MB
@@ -12,12 +12,12 @@ CPU Info-
 ▪︎ CPU Platform: $djsEval[require ('os').platform();yes]
 
 Package Info-
-▪︎ Aoi.js: v4.5.0
+▪︎ Aoi.js: v5.0.1
 ▪︎ Node.js: $nodeVersion\`\`\`
 
-$footer[Last updated at]
-$color[#5865F2]
-$title[The bert Bot Status]
+$footer[1;Last updated at]
+$color[1;#5865F2]
+$title[1;The bert Bot Status]
 $addtimeStamp;$channelID] $onlyIf[$getUserVar[command;$commandName]!=disabled;Command disabled]
 `,
 channel: "884959026784378928",

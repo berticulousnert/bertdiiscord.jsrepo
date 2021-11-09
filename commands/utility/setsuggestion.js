@@ -4,10 +4,10 @@ category:"General",
 aliases:['suggestions', 'enable-suggestions'],
 description:"Enables and sets the suggestions module for the server.",
 usage:"set-suggestions <channel where the suggestions go>",
-code:`$author[Suggestions module;$useravatar[$clientid]]
-$description[The suggestions will be redirected to <#$mentionedchannels[1]>, and people can only suggest in <#$mentionedchannels[2]>!]
-$color[f200f2]
-$footer[Thanks for the support!;$authoravatar]
+code:`$author[1;Suggestions module;$useravatar[$clientid]]
+$description[1;The suggestions will be redirected to <#$mentionedchannels[1]>, and people can only suggest in <#$mentionedchannels[2]>!]
+$color[1;#f200f2]
+$footer[1;Thanks for the support!;$authoravatar]
 $setservervar[suggest_channel;$mentionedchannels[1]]
 $setservervar[suggest_where;$mentionedchannels[2]]
 $onlyif[$mentionedchannels[2]!=;Mention 2 channel please! First channel is where the suggestions will be sent, second is where the people can suggest]

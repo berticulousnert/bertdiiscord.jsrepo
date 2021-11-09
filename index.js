@@ -19,7 +19,10 @@ bot.onBanAdd
 bot.onBanRemove
 bot.onGuildLeave()
 bot.onGuildJoin()
-
+const loader = new Aoijs.LoadCommands(bot)
+loader.load(bot.cmd, "./commands/")
+const loader = new Aoijs.LoadCommands(bot)
+loader.load(bot.cmd, "./leveling")
 
 //varables
 bot.variables({
@@ -317,58 +320,3 @@ $channelSendMessage[$channelID[$channelName];{description: **This Channel Has Be
 
 `
 })
-
-bot.onChannelDelete()
-bot.channelDeleteCommand({
- channel: "$getVar[modlogs]",
- code: `
-
-$sendMessage[{newEmbed: {title:RAID BOT DETECT!} {description:$usertag[$getauditlogs[1;everyone;CHANNEL_DELETE;$guildid;{executor.id}]] has been banned because deleted 2 channel in less than 3 second }};no]
-
-$ban[$getauditlogs[1;everyone;CHANNEL_DELETE;$guildid;{executor.id}];raid bot]
-
-
-$onlyIf[$getUserVar[c;$getauditlogs[1;everyone;CHANNEL_DELETE;$guildid;{executor.id}]]>=2;]
-
-
-$setUserVar[c;$math[$getUserVar[c;$getauditlogs[1;everyone;CHANNEL_DELETE;$guildid;{executor.id}]]+1];$getauditlogs[1;everyone;CHANNEL_DELETE;$guildid;{executor.id}]]
-
-
-$onlyIf[$isbot[$getauditlogs[1;everyone;CHANNEL_DELETE;$guildid;{executor.id}]]!=false;]
-$getauditlogs[1;everyone;CHANNEL_DELETE;$guildid;{executor.id}] $suppressErrors
-`
- })
-
-bot.loopCommand({
-code: `$resetUserVar[c]`,
- channel: "$getVar[modlogs]",
- every: 3000,
- executeOnStartup: true})
-
-
-bot.onChannelDelete()
-bot.channelDeleteCommand({
- channel: "$getVar[modlogs]",
- code: `
-
-$sendMessage[{newEmbed: {title:RAID BOT DETECT!} {description:$usertag[$getauditlogs[1;everyone;CHANNEL_CREATE;$guildid;{executor.id}]] has been banned because deleted 2 channel in less than 3 second }};no]
-
-$ban[$getauditlogs[1;everyone;CHANNEL_CREATE;$guildid;{executor.id}];raid bot]
-
-
-$onlyIf[$getUserVar[c;$getauditlogs[1;everyone;CHANNEL_CREATE;$guildid;{executor.id}]]>=2;]
-
-
-$setUserVar[c;$math[$getUserVar[c;$getauditlogs[1;everyone;CHANNEL_CREATE;$guildid;{executor.id}]]+1];$getauditlogs[1;everyone;CHANNEL_DELETE;$guildid;{executor.id}]]
-
-
-$onlyIf[$isbot[$getauditlogs[1;everyone;CHANNEL_CREATE;$guildid;{executor.id}]]!=false;]
-$getauditlogs[1;everyone;CHANNEL_CREATE;$guildid;{executor.id}] $suppressErrors
-`
- })
-
-bot.loopCommand({
-code: `$resetUserVar[c]`,
- channel: "$getServerVar[modlogs]",
- every: 3000,
- executeOnStartup: true})

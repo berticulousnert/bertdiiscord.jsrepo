@@ -1,6 +1,6 @@
 module.exports = {
   type: 'joinCommand',
-  channel: "$getServerVar[setwelcome]",
+  channel: "768969037689389090",
   code:`$title[]
 $description[・**Welcome!**
 <:Re:885213737420722186>Hello __[$username](https://discord.gg/rob)__

@@ -1,6 +1,5 @@
 module.exports = {
-  name: ".resetprefix",
-  nonPrefixed: true,
+  name: "resetprefix",
   code: `$resetServerVar[prefix]
   Prefix reseted to \`.\`
   $onlyPerms[admin;]
