@@ -21,8 +21,7 @@ bot.onGuildLeave()
 bot.onGuildJoin()
 const loader = new Aoijs.LoadCommands(bot)
 loader.load(bot.cmd, "./commands/")
-const loader = new Aoijs.LoadCommands(bot)
-loader.load(bot.cmd, "./leveling")
+
 
 //varables
 bot.variables({
