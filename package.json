@@ -1,11 +1,10 @@
-
 {
   "name": "-asdf",
   "version": "1.0.0",
   "main": "index.js",
   "engines": {
     "node": "16.x"
-},
+  },
   "scripts": {
     "start": "node index.js"
   },
@@ -16,7 +15,7 @@
     "@top-gg/sdk": "^3.1.2",
     "akinator-discord.js": "0.0.20",
     "amaribot.js": "^1.2.4",
-    "aoi.js": "^5.0.1",
+    "aoi.js": "^5.0.2",
     "dblapi.js": "^2.4.1",
     "discord-button-page": "^3.5.0",
     "discord-buttons": "^4.0.0",
