@@ -2,7 +2,7 @@ module.exports = {
     name: "setmute",
     aliases: ["setmuterole"],
     code: `
-    $color[GREEN]
+    $color[1;GREEN]
    $title[1;Done]
   $description[1;Set <@&$findRole[$message[1]]> as a mute role]
   $setServerVar[muted;$findRole[$message[1]]]
@@ -10,6 +10,6 @@ module.exports = {
   $onlyIf[$message[1]!=;{title:Error:Too few arguments given}
   {field:**Usage**:\`setmute <role | roleID>\`}{color:RED}}]
   $onlyPerms[admin;Missing permission:\`admin\`]
-  $onlyBotPerms[admin;Missing permission:\`admin\`]
+  $onlyBotPerms[admin;Missing permission    ez:\`admin\`]
   $suppressErrors` 
   }

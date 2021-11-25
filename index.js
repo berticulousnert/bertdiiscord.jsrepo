@@ -10,9 +10,8 @@ const bot = new aoijs.Bot({
 
 //Events
 bot.onInteractionCreate()
-bot.onMessage()
-bot.onMessageDelete()
 bot.onJoin()
+bot.onMessage()
 // bot.LoadCommands.load(__dirname,'./commands',)
 // bot.LoadCommands.load(__dirname,'./custom',)
 bot.onBanAdd
@@ -22,6 +21,14 @@ bot.onGuildJoin()
 const loader = new aoijs.LoadCommands(bot)
 loader.load(bot.cmd, "./commands/")
 
+const Lavalink = new aoijs.Lavalink(bot);
+
+Lavalink.addNode({
+ url: "lavalink.darrennathanael.com:443",
+ password: "airportgateway",
+ name: "randomname",
+ secure: true,
+ })
 
 //varables
 bot.variables({
@@ -129,61 +136,37 @@ bot.variables({
     bping: "0",
     wsping: "0",
     dbping: "0",
-    c: "0"
+    c: "0",
+    levelling: ""
     })
 
-
-//Ready Event
-bot.readyCommand({
+    bot.readyCommand({
     channel: "",
-    code: `$log[Ready on $userTag[$clientID]]`
+    code: `$blacklist[globalUser;$joinTextSplit[;]]
+$textSplit[$getVar[bl];;] $log[started on $username[$clientID]`
 })
 
+
 bot.status({
-    text: "Bert optimied",
+    text: "being remade",
     type: "WATCHING",
     status: "idle",
-    time: 12
+    time: 5
   })
 
   bot.status({
-    text: "my people",
+    text: "being remade",
     type: "WATCHING",
     status: "idle",
-    time: 12
+    time: 5
   })
 
   bot.status({
     text: "https://www.bert-bot.tk/#",
     type: "WATCHING",
     status: "idle",
-    time: 12
+    time: 1
   })
-
-
-
-
-
-
-bot.updateCommand({
- channel: "$channelID",
- code: `$setChannelVar[msgEditorID;$authorID]
- $setChannelVar[esnipeOldMsg;$djseval[d.data.oldm.content;yes]]`
-})
-bot.onMessageUpdate();
- 
-bot.command({
- name: "editsnipe",
- aliases: ["esnipe"],
- code: `$author[1;$username[$getChannelVar[msgEditorID]]#$discriminator[$getChannelVar[msgEditorID]];$userAvatar[$getChannelVar[msgEditorID]]]
-$description[1;$getChannelVar[esnipeOldMsg]]
-$addTimestamp
-$color[1;RANDOM]
-$onlyIf[$getChannelVar[esnipeOldMsg]!=undefinied;{description: there is nothing to snipe}{color: RED}]
-$onlyIf[$getChannelVar[msgEditorID]!=undefinied;{description: there is nothing to snipe}{color: RED}]
-$suppressErrors[There is nothing to snipe]`
-})
-
 
 
 bot.command({
@@ -197,70 +180,6 @@ $color[1;RANDOM]
 $suppressErrors[**⛔ Could not find message**]`
 })
 
-
-
-
-bot.command({
-  name: "timer",
-  code: `$loop[1;count]
- $setUserVar[data;$get[messageID],$channelID]
- $djsEval[
- const parse = require('parse-duration')
- let secs = parse(d.args[0], 's')
- d.client.db.set("main", 'time_' + d.message.guild.id + '_' + d.message.author.id, secs)
- ]
- $let[messageID;$channelSendMessage[$channelID;$message[1];yes]]
- $argsCheck[1;How we gonna count down if i didnt get any number...]
- $onlyForIDs[746758742871244811;426162686791778304;]`
- })
- 
- bot.awaitedCommand({
-  name: "count",
-  code: `$if[$getUserVar[time]!=0]
- $loop[1;count]
- $editMessage[$advancedTextSplit[$getUserVar[data];,1];$getUserVar[time];$advancedTextSplit[$getUserVar[data];,;2]]
- $addMessageReactions[$channelID;$advancedTextSplit[$getUserVar[data];,1];😂]
- $setUserVar[time;$sub[$getUserVar[time];1]]
- $else
- $editMessage[$advancedTextSplit[$getUserVar[data];,1]; $getReactions[$channelID;$advancedTextSplit[$getUserVar[data];,1];😂;mention] Timer Ended;$advancedTextSplit[$getUserVar[data];,;2]] $suppressErrors[Please only say a number]
- $endif
- $wait[1s]
- `
- })
-
-
-
-
-
-bot.command({
-  name: "setup-modlogs",
-  aliases: ["sml"],
-  code: `
-  
-  $if[$message[1]==remove]
-  $setServerVar[modlogs;0]
-  $color[1;RANDOM]
-  $channelSendMessage[$getServerVar[modlogs];<@$authorID> - Mod Logs Channel was removed by $username #$discriminator[$authorID].]
-  $suppressErrors
- 
-  $else
-  $if[$channelExists[$findServerChannel[$message]]==true]
-  $setServerVar[modlogs;$findServerChannel[$message]]
-  $description[1;<#$findServerChannel[$message]> set as Mod Logs Channel from <#$channelCategoryID[$findServerChannel[$messag]]> Category.]
-  $color[1;RANDOM]
-  
-  $endif
-  $endif
-  
-  $argsCheck[>1;{newEmbed: {title:Missing Arguments}{description:$getServerVar[prefix]s-modlogs <#channel/ID/remove>}{color:RED}}]
-  $onlyPerms[manageserver;{newEmbed: {title:Missing Permissions}{description:Missing Manage Server permission}{color:RED}}]`
-
-})
-
-
-
-
-
 bot.onGuildJoin({
   channel: "884959027962982465",
   code: `
@@ -272,5 +191,32 @@ bot.onGuildLeave({
   channel: "884959027962982466",
   code: `
 I have left $serverName!
+`
+})
+
+
+bot.command({
+ name: "timer",
+ code: `$loop[1;count]
+$setUserVar[data;$get[messageID],$channelID]
+$djsEval[
+const parse = require('parse-duration')
+let secs = parse(d.args[0], 's')
+d.client.db.set("main", 'time_' + d.message.guild.id + '_' + d.message.author.id, secs)
+]
+$let[messageID;$channelSendMessage[$channelID;$message[1];yes]]
+$argsCheck[1;***ADD AN ARG!!!***]`
+})
+
+bot.awaitedCommand({
+ name: "count",
+ code: `$if[$getUserVar[time]!=0]
+$loop[1;count]
+$editMessage[$advancedTextSplit[$getUserVar[data];,1];$getUserVar[time];$advancedTextSplit[$getUserVar[data];,;2]]
+$setUserVar[time;$sub[$getUserVar[time];1]]
+$else
+$editMessage[$advancedTextSplit[$getUserVar[data];,1];<@$authorID> Timer Ended;$advancedTextSplit[$getUserVar[data];,;2]] $suppressErrors[Please only say a number]
+$endif
+$wait[1s]
 `
 })

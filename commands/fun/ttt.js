@@ -11,6 +11,6 @@ const game = new TicTacToe({
  oEmoji: '0️⃣' ,
 })
 game.start()})();yes]
-$onlyif[$mentioned[1]!=;{description:Mention someone to play against!}{color:FF0000}]
+$onlyif[$mentioned[1]!=;{newEmbed: {description:Mention someone to play against!}{color:FF0000}]}
  `
 }

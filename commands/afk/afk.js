@@ -16,6 +16,6 @@ module.exports = ({
   let seconds = Math.floor(second)
   seconds;yes]]
   $onlyIf[$getUserVar[afk;$authorID]==n;{title:ERR0R:tm:!} {description:You are already AFK!}]
-  $suppressErrors[]
+  
 `
 })

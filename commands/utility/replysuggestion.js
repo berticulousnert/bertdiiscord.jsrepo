@@ -15,7 +15,7 @@ $onlyif[$message[1]<=$getservervar[suggest_count];Only \`$getservervar[suggest_c
 $onlyif[$isnumber[$message[1]]==true;Invalid number!]
 $onlyif[$message[3]!=;Invalid syntax. Try \`$getservervar[prefix]reply <suggestion #> <accept/deny> <reason>\`.]
 $onlyif[$getservervar[suggest_channel]!=;The suggestions module is not yet enabled!]
-$onlyperms[managechannels;You require manage channels permissions for doing this!] $onlyIf[$getUserVar[command;$commandName]!=disabled;Command disabled]`})
+$onlyperms[managechannel;You require manage channels permissions for doing this!] $onlyIf[$getUserVar[command;$commandName]!=disabled;Command disabled]`})
 //send err in dmes
 //what does the error say?
 //wait can u run `.eval $userPerms[$clientID]` in the support server lemme check yes i can ok

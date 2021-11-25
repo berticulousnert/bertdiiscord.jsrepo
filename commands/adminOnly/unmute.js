@@ -1,7 +1,7 @@
 module.exports = {
   name: "unmute",
   code: `
-$takeRoles[$findMember[$message[1]];$getServerVar[muted]]
+$takeRoles[$guildID;$findMember[$message[1]];$getServerVar[muted]]
 $title[1;Done]
 $description[1;$username[$findMember[$message[1]]] has been unmuted]
 $color[1;GREEN]
