@@ -5,8 +5,16 @@ const bot = new aoijs.Bot({
     "token"]
 , //Discord Bot Token
   prefix: ['$getServerVar[prefix]', '<@!$clientID>', '<@$clientID>', '.'], 
-  intents: "all"
+  intents: "all",
+  internalSharding: "true"
 })
+
+const express = require('express')
+const app = express()
+app.get('/', async (req, res) => {
+  res.send('Up and running')
+})
+app.listen(3000, () => console.log('Expresso!'))
 
 //Events
 bot.onInteractionCreate()
@@ -24,10 +32,10 @@ loader.load(bot.cmd, "./commands/")
 const Lavalink = new aoijs.Lavalink(bot);
 
 Lavalink.addNode({
- url: "lavalink.darrennathanael.com:443",
- password: "airportgateway",
- name: "randomname",
- secure: true,
+ url: "node3.ultimatesrv.com:21397",
+ password: "youshallnotpass",
+ name: "my-lavalink",
+ secure: false,
  })
 
 //varables
@@ -137,7 +145,8 @@ bot.variables({
     wsping: "0",
     dbping: "0",
     c: "0",
-    levelling: ""
+    levelling: "",
+    bl: ""
     })
 
     bot.readyCommand({
@@ -151,14 +160,28 @@ bot.status({
     text: "being remade",
     type: "WATCHING",
     status: "idle",
-    time: 5
+    time: 2
   })
 
   bot.status({
     text: "being remade",
     type: "WATCHING",
     status: "idle",
-    time: 5
+    time: 2
+  })
+
+bot.status({
+    text: "$allMembersCount members",
+    type: "WATCHING",
+    status: "idle",
+    time: 2
+  })
+
+  bot.status({
+    text: "$serverCount guilds",
+    type: "WATCHING",
+    status: "idle",
+    time: 2
   })
 
   bot.status({
