@@ -19,8 +19,6 @@ app.listen(3000, () => console.log('Expresso!'))
 bot.onInteractionCreate()
 bot.onJoin()
 bot.onMessage()
-// bot.LoadCommands.load(__dirname,'./commands',)
-// bot.LoadCommands.load(__dirname,'./custom',)
 bot.onBanAdd
 bot.onBanRemove
 bot.onGuildLeave()
@@ -202,21 +200,6 @@ $color[1;RANDOM]
 $suppressErrors[**⛔ Could not find message**]`
 })
 
-bot.onGuildJoin({
-  channel: "884959027962982465",
-  code: `
-Ive joined $serverName!
-`
-})
-
-bot.onGuildLeave({
-  channel: "884959027962982466",
-  code: `
-I have left $serverName!
-`
-})
-
-
 bot.command({
  name: "timer",
  code: `$loop[1;count]
@@ -242,3 +225,10 @@ $endif
 $wait[1s]
 `
 })
+
+bot.command({
+  name: "support",
+  code: ` $description[1;Support server right here!] $footer[1;Support server| https://discord.gg/74FbuXsBHb]`
+})
+
+//oh hello
