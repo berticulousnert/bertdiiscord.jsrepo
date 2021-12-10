@@ -5,8 +5,7 @@ const bot = new aoijs.Bot({
     "token"]
 , //Discord Bot Token
   prefix: ['$getServerVar[prefix]', '<@!$clientID>', '<@$clientID>', '.'], 
-  intents: "all",
-  internalSharding: "true"
+  intents: "all"
 })
 
 const express = require('express')
@@ -32,8 +31,8 @@ loader.load(bot.cmd, "./commands/")
 const Lavalink = new aoijs.Lavalink(bot);
 
 Lavalink.addNode({
- url: "node3.ultimatesrv.com:21397",
- password: "youshallnotpass",
+ url: "localhost:1652",
+ password: "Berticulous",
  name: "my-lavalink",
  secure: false,
  })
