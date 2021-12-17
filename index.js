@@ -4,7 +4,7 @@ const bot = new aoijs.Bot({
   token: process.env[
     "token"]
 , //Discord Bot Token
-  prefix: ['$getServerVar[prefix]', '<@!$clientID>', '<@$clientID>', '.'], 
+  prefix: ',', 
   intents: "all"
 })
 
@@ -18,6 +18,7 @@ app.listen(3000, () => console.log('Expresso!'))
 //Events
 bot.onInteractionCreate()
 bot.onJoin()
+bot.onInteractionCreate()
 bot.onMessage()
 bot.onBanAdd
 bot.onBanRemove

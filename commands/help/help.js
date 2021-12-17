@@ -1,5 +1,6 @@
 module.exports = {
   name: "help",
+  $if: "v4",
   code: `
 $addButton[1;All commands;5;https://www.bert-bot.tk/;no;]
 

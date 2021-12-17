@@ -1,4 +1,4 @@
-module.exports = [
+/*module.exports = [
 {
  name : 'selectMenu',
  code : `
@@ -25,4 +25,4 @@ $interactionReply[;$nonEscape[$if[$interactionData[values[0]]==opt1;{newEmbed:{t
 }]
 `
 }
-]
+]*/

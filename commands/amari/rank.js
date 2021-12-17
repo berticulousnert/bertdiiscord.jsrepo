@@ -1,5 +1,6 @@
 module.exports = {
   name: 'ar',
+  $if: "v4",
   description: 'Get a users Amari Level',
   code: `
   $if[$checkContains[$splitText[1];ERR0R]==true]
