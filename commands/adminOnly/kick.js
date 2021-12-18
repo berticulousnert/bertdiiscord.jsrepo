@@ -16,6 +16,5 @@ $onlyIf[$message[1]!=;\`\`\`$getServerVar[prefix]kick <member> [reason]
 SyntaxError: member is a required argument that is missing.\`\`\`]
 $onlyBotPerms[kick;**❌ The bot doesn't have enough permissions**]
 $onlyPerms[kick;**❌ You don't have enough permission**]
-$suppressErrors[**ERROR** Can't find user] 
-$onlyIf[$getUserVar[command;$commandName]!=disabled;Command disabled]`
+$suppressErrors[**ERROR** Can't find user] `
 }

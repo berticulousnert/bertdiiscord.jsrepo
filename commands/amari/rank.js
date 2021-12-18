@@ -1,5 +1,6 @@
 module.exports = {
   name: 'ar',
+  aliases: "amari",
   $if: "v4",
   description: 'Get a users Amari Level',
   code: `

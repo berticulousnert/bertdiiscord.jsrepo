@@ -150,7 +150,7 @@ bot.variables({
     bot.readyCommand({
     channel: "",
     code: `$blacklist[globalUser;$joinTextSplit[;]]
-$textSplit[$getVar[bl];;] $log[started on $username[$clientID]`
+$textSplit[$getVar[bl];;] $log[started on $username[$clientID] `
 })
 
 
@@ -189,6 +189,11 @@ bot.status({
     time: 1
   })
 
+
+bot.command({
+  name: "slice",
+  code: `$messageSlice[1;3]`
+})
 
 bot.command({
 name: "quote",
@@ -232,4 +237,4 @@ bot.command({
   code: ` $description[1;Support server right here!] $footer[1;Support server| https://discord.gg/74FbuXsBHb]`
 })
 
-//oh hello
+//hi jalan wat yah doing?

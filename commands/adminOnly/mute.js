@@ -10,5 +10,7 @@ $onlyIf[$rolePosition[$highestRole[$clientID]]<$rolePosition[$highestRole[$findU
 $onlyPerms[mutemembers;User Missing permission:\`mutemembers\`]
 $onlyBotPerms[mutemembers;Bot Missing permission:\`mutemembers\`]
 $suppressErrors[Ayo mans i have error ill send this to my owner  Spam == noob]
+$argsCheck[1; {newEmbed: {title:Error} {description:** Usage**
+\`\`mute <member | userID>\`\`}}]
 `
 }

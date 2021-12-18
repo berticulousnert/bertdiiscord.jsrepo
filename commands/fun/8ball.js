@@ -1,4 +1,4 @@
 module.exports = {
     name: "8ball",
-    code: `$jsonRequest[https://api.popcat.xyz/8ball;answer;ez error]`
+    code: `$description[1; Question: $message \n Answer: $jsonRequest[https://api.popcat.xyz/8ball;answer;ez error]]`
 }

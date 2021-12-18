@@ -1,5 +1,6 @@
 module.exports = {
     name:"sm",
+    $if: "v4",
     aliases: ['slowmode','slowm'],
     code:`$slowmode[$channelID;$noMentionMessage]
     Set slowmode to **$noMentionMessage**.
@@ -7,8 +8,8 @@ module.exports = {
     $slowmode[$channelID;0]
     Slow mode has been removed.
     $endif
-    $argsCheck[>1;Enter a value for slowmode. Like: 3, 3s, 3m, 3h etc. To remove slowmode simply type **remove**.]
-    $onlyPerms[managechannels;You Missing permission \`MANAGE_CHANNELS\`]
-    $onlyBotPerms[managechannels;Me Missing permission \`MANAGE_CHANNELS\`]
-    $suppressErrors`
+    $argsCheck[1;Enter a value for slowmode. Like: 3, 3s, 3m, 3h etc. To remove slowmode simply type **remove**.]
+    $onlyPerms[managechannel;You Missing permission \`MANAGE_CHANNELS\`]
+    $onlyBotPerms[managechannel;Me Missing permission \`MANAGE_CHANNELS\`]
+    `
    }
