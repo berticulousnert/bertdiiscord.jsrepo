@@ -4,7 +4,7 @@ const bot = new aoijs.Bot({
   token: process.env[
     "token"]
 , //Discord Bot Token
-  prefix: '.', 
+  prefix: '$getServerVar[prefix]', 
   shardAmmount: 200,
   sharding: true,
   intents: "all",
