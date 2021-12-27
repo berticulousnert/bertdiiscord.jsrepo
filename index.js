@@ -4,10 +4,17 @@ const bot = new aoijs.Bot({
   token: process.env[
     "token"]
 , //Discord Bot Token
-  prefix: ',', 
+  prefix: '.', 
   shardAmmount: 200,
   sharding: true,
-  intents: "all"
+  intents: "all",
+        database: {
+        type:"dbdjs.mongo",
+        db:require('dbdjs.mongo'),
+        path:"./database/",
+        tables:["mains"],
+        promisify:false
+    },
 })
 
 const { AutoPoster } = require('topgg-autoposter')
@@ -17,6 +24,17 @@ const ap = AutoPoster(process.env.topggt, bot)
 ap.on('posted', () => {
   console.log('Posted stats to Top.gg!')
 })
+
+const mongoose = require("mongoose")
+const dbdmongo = require("dbdjs.mongo").default
+
+mongoose.connect("mongodb+srv://bert3:bert@cluster0.benpr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    keepAlive: true
+})
+
+dbdmongo.createModel("main")
 
 
 const express = require('express')
@@ -131,7 +149,8 @@ bot.variables({
     dbping: "0",
     c: "0",
     levelling: "",
-    bl: ""
+    bl: "",
+    mongo: ""
     })
 
     bot.readyCommand({
@@ -178,16 +197,6 @@ bot.status({
     time: 1
   })
 
-  bot.command({
-name: "teste",
-code: "$forEachGuildChannel[loop3]"
-})
-
-bot.awaitedCommand({
-name: "loop3",
-code: `hi` //Every channel in the current guild value for 'hello' will be 'bye'
-})
-
 
 bot.command({
 name: "quote",
@@ -228,7 +237,7 @@ $wait[1s]
 
 bot.command({
   name: "support",
-  code: ` $description[1;[Support server](https://discord.gg/74FbuXsBHb 'join noob')] $footer[1;Support server| https://discord.gg/74FbuXsBHb]`
+  code: ` $description[1;[Support server](https://discord.gg/74FbuXsBHb 'join noob') go brrr] $footer[1;Support server| https://discord.gg/74FbuXsBHb]`
 })
 
 //hi jalan wat yah doing?
