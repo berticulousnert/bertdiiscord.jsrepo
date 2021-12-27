@@ -163,38 +163,31 @@ $textSplit[$getVar[bl];/]`
 
 
 bot.status({
-    text: "being remade",
-    type: "WATCHING",
-    status: "idle",
-    time: 2
-  })
-
-  bot.status({
-    text: "being remade",
-    type: "WATCHING",
-    status: "idle",
-    time: 2
-  })
-
-bot.status({
     text: "$allMembersCount members",
     type: "WATCHING",
     status: "idle",
-    time: 2
+    time: 5
   })
 
   bot.status({
     text: "$serverCount guilds",
     type: "WATCHING",
     status: "idle",
-    time: 2
+    time: 5
   })
 
   bot.status({
     text: "https://www.bert-bot.tk/#",
     type: "WATCHING",
     status: "idle",
-    time: 1
+    time: 5
+  })
+
+  bot.status({
+    text: "Prefix: .",
+    type: "WATCHING",
+    status: "idle",
+    time: 5
   })
 
 
@@ -237,7 +230,9 @@ $wait[1s]
 
 bot.command({
   name: "support",
-  code: ` $description[1;[Support server](https://discord.gg/74FbuXsBHb 'join noob') go brrr] $footer[1;Support server| https://discord.gg/74FbuXsBHb]`
+  code: `$author[1;Why not join?] $description[1;[Support server](https://discord.gg/74FbuXsBHb 'join noob') go brrr] 
+  $color[RANDOM]
+  $footer[1;Support server| https://discord.gg/74FbuXsBHb]`
 })
 
 //hi jalan wat yah doing?
