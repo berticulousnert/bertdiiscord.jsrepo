@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@top-gg/sdk": "^3.1.3",
     "amaribot.js": "^1.4.1",
     "aoi.js": "^5.0.6",
     "cheerio": "^1.0.0-rc.10",
@@ -20,6 +21,7 @@
     "mongodb": "^4.2.2",
     "mongoose": "^6.1.2",
     "parse-duration": "^1.0.2",
+    "topgg-autoposter": "^2.0.1",
     "weky": "^3.1.8",
     "ytdl-core-discord": "^1.3.1"
   },

@@ -5,8 +5,19 @@ const bot = new aoijs.Bot({
     "token"]
 , //Discord Bot Token
   prefix: ',', 
+  shardAmmount: 200,
+  sharding: true,
   intents: "all"
 })
+
+const { AutoPoster } = require('topgg-autoposter')
+
+const ap = AutoPoster(process.env.topggt, bot)
+
+ap.on('posted', () => {
+  console.log('Posted stats to Top.gg!')
+})
+
 
 const express = require('express')
 const app = express()
@@ -18,7 +29,6 @@ app.listen(3000, () => console.log('Expresso!'))
 //Events
 bot.onInteractionCreate()
 bot.onJoin()
-bot.onInteractionCreate()
 bot.onMessage()
 bot.onBanAdd
 bot.onBanRemove
@@ -30,8 +40,8 @@ loader.load(bot.cmd, "./commands/")
 const Lavalink = new aoijs.Lavalink(bot);
 
 Lavalink.addNode({
- url: "localhost:1652",
- password: "Berticulous",
+ url: "lavalink-repl.supremesupreme2.repl.co",
+ password: "berticulous",
  name: "my-lavalink",
  secure: false,
  })
@@ -45,10 +55,9 @@ bot.variables({
     jd: "",
     jf: "",
     messages: '0',
-    Blacklist: "false",
     jc: "",
     banned: "",
-    chatbotchannel: "",
+    cbChannel: "",
     textwelcomemessage: "",
     premium: "false",
     levelling: "false",
@@ -61,6 +70,7 @@ bot.variables({
     level_msges: "",
     level_morder: "",
     req: "100",
+    chatbotchannel: "",
     rank: "0",
     msg: "",
     antiraid: "",
@@ -96,29 +106,6 @@ bot.variables({
   bot.variables({
     data: "",
     time: "",
-    question1: "",
-    question2: "",
-  question3: "",
-  question4: "",
-  question5: "",
-  question6: "",
-  question7: "",
-  question8: "",
-  question9: "",
-  question10: "",
-  questionlogchannel: "",
-  questionmessage: "",
-  setqtitle: "",
-  setqdescription1: "",
-  setqdescription2: "",
-  setqdescription3: "",
-  setqdescription4: "",
-  setqdescription5: "",
-  setqdescription6: "",
-  setqdescription7: "",
-  setqdescription8: "",
-  setqdescription9: "",
-  setqdescription10: "",
   setqfooter: "",
   setqcolor: "",
   password: "",
@@ -150,7 +137,9 @@ bot.variables({
     bot.readyCommand({
     channel: "",
     code: `$blacklist[globalUser;$joinTextSplit[;]]
-$textSplit[$getVar[bl];;] $log[started on $username[$clientID] `
+$blacklistError[globalUser;Imagine trying to use bert command]
+
+$textSplit[$getVar[bl];/]`
 })
 
 
@@ -189,11 +178,16 @@ bot.status({
     time: 1
   })
 
-
-bot.command({
-  name: "slice",
-  code: `$messageSlice[1;3]`
+  bot.command({
+name: "teste",
+code: "$forEachGuildChannel[loop3]"
 })
+
+bot.awaitedCommand({
+name: "loop3",
+code: `hi` //Every channel in the current guild value for 'hello' will be 'bye'
+})
+
 
 bot.command({
 name: "quote",
@@ -234,7 +228,7 @@ $wait[1s]
 
 bot.command({
   name: "support",
-  code: ` $description[1;Support server right here!] $footer[1;Support server| https://discord.gg/74FbuXsBHb]`
+  code: ` $description[1;[Support server](https://discord.gg/74FbuXsBHb 'join noob')] $footer[1;Support server| https://discord.gg/74FbuXsBHb]`
 })
 
 //hi jalan wat yah doing?
