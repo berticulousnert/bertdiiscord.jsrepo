@@ -17,19 +17,20 @@ const bot = new aoijs.Bot({
     },
 })
 
-const { AutoPoster } = require('topgg-autoposter')
+/*const { AutoPoster } = require('topgg-autoposter')
 
 const ap = AutoPoster(process.env.topggt, bot)
 
 ap.on('posted', () => {
   console.log('Posted stats to Top.gg!')
-})
+})*/
 
 const mongoose = require("mongoose")
 const dbdmongo = require("dbdjs.mongo").default
 
 mongoose.connect("mongodb+srv://bert3:bert@cluster0.benpr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", {
     useNewUrlParser: true,
+    useFindAndModify: false,
     useUnifiedTopology: true,
     keepAlive: true
 })
@@ -158,7 +159,8 @@ bot.variables({
     code: `$blacklist[globalUser;$joinTextSplit[;]]
 $blacklistError[globalUser;Imagine trying to use bert command]
 
-$textSplit[$getVar[bl];/]`
+$textSplit[$getVar[bl];/]
+ `
 })
 
 
