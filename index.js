@@ -72,7 +72,8 @@ bot.variables({
     cbChannel: "",
     data: "",
     time: "",
-    bl: ""
+    bl: "",
+    variable: ""
   })
   
 
