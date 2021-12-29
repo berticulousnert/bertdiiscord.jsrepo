@@ -68,91 +68,13 @@ Lavalink.addNode({
 //varables
 bot.variables({
     prefix: ".",
-    setwelcome: "",
-    setj: "",
-    jt: "",
-    jd: "",
-    jf: "",
-    messages: '0',
-    jc: "",
-    banned: "",
+    messages: "0",
     cbChannel: "",
-    textwelcomemessage: "",
-    premium: "false",
-    levelling: "false",
-    level_msg: "{user.mention}, you just levelled up to {level}!",
-    level_channel: "",
-    level_roles: "",
-    level_order: "",
-    exp: "0",
-    level_card: "https://wallpapercave.com/wp/wp2704825.jpg",
-    level_msges: "",
-    level_morder: "",
-    req: "100",
-    chatbotchannel: "",
-    rank: "0",
-    msg: "",
-    antiraid: "",
-    antiraidlog: "",
-    suggest_channel: "",
-    suggest_count: "0",
-    suggest_where: "",
-    su: "",
-    channel_snipe: "",
-    author_snipe: "",
-    message_snipe: "",
-    icon_snipe: "",
-    snipeperms: "",
-    command: "",
-    mid: "",
-    modlogs: "",
-    afk: "n",
-    afkwhy: "",
-    command: "enabled",
-    afkts: '',
-    botjoing: "",
-    botleaveg: "",
-    autorolej: "",
-    embedColor: "#000000",
-    snipe_msg: "",
-   snipe_author: "",
-   snipe_channel: "",
-   snipe_date: "",
-   msgEditorID: "undefined",
-   esnipeOldMsg: "undefined"
-  })
-  
-  bot.variables({
     data: "",
     time: "",
-  setqfooter: "",
-  setqcolor: "",
-  password: "",
-  userpw: "",
-  cmdprefix: "",
-  cmdmessage: ""
+    bl: ""
   })
   
-  bot.variables({
-    endstamp:"0",
-    hoster:"",
-    prize:"",
-    joined:"0",
-    joinedusers:"",
-    ended:"false",
-    antilink: "false",
-    cbw: "",
-    badwords: "false",
-    bl:"",
-    muted: "",
-    bping: "0",
-    wsping: "0",
-    dbping: "0",
-    c: "0",
-    levelling: "",
-    bl: "",
-    mongo: ""
-    })
 
     bot.readyCommand({
     channel: "",
@@ -168,28 +90,21 @@ bot.status({
     text: "$allMembersCount members",
     type: "WATCHING",
     status: "idle",
-    time: 5
+    time: 12
   })
 
   bot.status({
     text: "$serverCount guilds",
     type: "WATCHING",
     status: "idle",
-    time: 5
-  })
-
-  bot.status({
-    text: "https://www.bert-bot.tk/#",
-    type: "WATCHING",
-    status: "idle",
-    time: 5
+    time: 12
   })
 
   bot.status({
     text: "Prefix: .",
     type: "WATCHING",
     status: "idle",
-    time: 5
+    time: 12
   })
 
 
