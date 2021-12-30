@@ -59,9 +59,9 @@ loader.load(bot.cmd, "./commands/")
 const Lavalink = new aoijs.Lavalink(bot);
 
 Lavalink.addNode({
- url: "lavalink-repl.supremesupreme2.repl.co",
- password: "berticulous",
- name: "my-lavalink",
+ url: "lava.link:80",
+ password: "neo",
+ name: "Music",
  secure: false,
  })
 
@@ -107,6 +107,18 @@ bot.status({
     status: "idle",
     time: 12
   })
+
+bot.command({
+ name: "play",
+ code: `
+ Added $lavalinkExecute[songinfo;title] to queue
+ $let[a;$lavalinkExecute[$replaceText[$replaceText[$lavalinkExecute[isIdling];true;play];false;volume]]]
+ $log[$lavalinkExecute[isIdling]|$lavalinkExecute[isPlaying]|$lavalinkExecute[isPaused]]
+ $let[a;$lavalinkExecute[addtrack;$get[key];1]]
+ $let[key;$lavalinkExecute[search;$message]]
+ $lavalinkExecute[connect]
+ `
+});
 
 
 bot.command({
@@ -154,3 +166,5 @@ bot.command({
 })
 
 //hi jalan wat yah doing?
+
+
