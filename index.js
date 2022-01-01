@@ -109,6 +109,17 @@ bot.status({
   })
 
 bot.command({
+name: "cache",
+code: "$forEachGuild[1;{};cache]"
+})
+
+bot.awaitedCommand({
+name: "cache",
+code: `$cacheMembers[$guildID] $log[Cached $serverNames]` //Every servers value for 'hello' will be 'bye'
+})
+
+
+bot.command({
  name: "play",
  code: `
  Added $lavalinkExecute[songinfo;title] to queue
