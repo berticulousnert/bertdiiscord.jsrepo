@@ -4,7 +4,7 @@ const bot = new aoijs.Bot({
   token: process.env[
     "token"]
 , //Discord Bot Token
-  prefix: '$getServerVar[prefix]', 
+  prefix: ['$getServerVar[prefix]','<@!$clientID>'],
   shardAmmount: 200,
   sharding: true,
   intents: "all",
@@ -17,13 +17,13 @@ const bot = new aoijs.Bot({
     },
 })
 
-const { AutoPoster } = require('topgg-autoposter')
+/*const { AutoPoster } = require('topgg-autoposter')
 
 const ap = AutoPoster(process.env.topggt, bot)
 
 ap.on('posted', () => {
   console.log('Posted stats to Top.gg!')
-})
+})*/
 
 const mongoose = require("mongoose")
 const dbdmongo = require("dbdjs.mongo").default
@@ -59,8 +59,8 @@ loader.load(bot.cmd, "./commands/")
 const Lavalink = new aoijs.Lavalink(bot);
 
 Lavalink.addNode({
- url: "lava.link:80",
- password: "neo",
+ url: "localhost:3535",
+ password: "someStongPasswordHere",
  name: "Music",
  secure: false,
  })
