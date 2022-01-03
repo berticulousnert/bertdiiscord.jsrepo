@@ -2,7 +2,7 @@ module.exports = {
   name: "activity",
   $if: "v4",
   code: `
- $onlyif[$message!=;{newEmbed:{title: Bro??}{description: You must choose what i should host P.S It the words are case sensitive. \n ***Avaliable: Youtube, Poker, Betrayal, Chess, Fishington, Lettertile, Wordsnack, Doodlecrew, Spellcast, Awkword, Puttyparty***}{footer:PC only.}{color: #91B2C7}}]
+ $onlyif[$message!=;{newEmbed:{title: Bro??}{description: You must choose what i should host P.S It the words are case sensitive. \n ***Avaliable: Youtube, Poker, Betrayal, Chess, Fishington, Lettertile, Wordsnack, Doodlecrew, Spellcast, Awkword***}{footer:PC only.}{color: #91B2C7}}]
 
 $if[$message==Youtube;Error]
  Starting Youtube $djseval[
@@ -100,16 +100,6 @@ const { DiscordTogether } = require('discord-together');
 
 client.discordTogether = new DiscordTogether(client);
 client.discordTogether.createTogetherCode('$voiceID', 'awkword').then(async invite => {
- return message.channel.send(invite.code);
- });
- ]
- $endif
- $if[$message==Puttyparty;error]
-Starting putty party $djseval[
-const { DiscordTogether } = require('discord-together');
-
-client.discordTogether = new DiscordTogether(client);
-client.discordTogether.createTogetherCode('$voiceID', 'puttyparty').then(async invite => {
  return message.channel.send(invite.code);
  });
  ]
