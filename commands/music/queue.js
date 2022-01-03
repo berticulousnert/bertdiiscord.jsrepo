@@ -1,4 +1,4 @@
-/*bot.command({
+module.exports = {
     name: "queue",
     code: `
     $title[1;Player's queue]
@@ -7,4 +7,4 @@
 $lavalinkExecute[queue]]
     $color[1;RANDOM]
     `
-});*/
+}

@@ -1,4 +1,4 @@
-/*bot.command({
+module.exports = {
   name: "nowplaying",
   aliases: ["np"],
   code: `
@@ -12,4 +12,4 @@ Track duration is $lavalinkExecute[songinfo;duration]]
   $color[1;RANDOM]
   $author[1;Track playing - $lavalinkExecute[songinfo;title]]
   `
-});*/
+});
