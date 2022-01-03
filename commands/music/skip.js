@@ -1,6 +1,6 @@
 module.exports = {
 name: "skip",
-code: `$lavalinkExecute[skip]
+code: `$suppressErrors[Connection Error] $lavalinkExecute[skip]
 ⏩ Skipped!
 $onlyif[$authorID==$botOwnerID;Command disabled until further noticed.]
 $onlyIf[$lavalinkExecute[isPaused]!=0;**⛔ Nothing song was playing**]

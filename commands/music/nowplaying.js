@@ -1,7 +1,7 @@
 module.exports = {
   name: "nowplaying",
   aliases: ["np"],
-  code: `
+  code: `$suppressErrors[Connection Error] 
   $thumbnail[1;$lavalinkExecute[getthumbnail;$get[a];hqdefault]]
   $let[a;$lavalinkExecute[songinfo;identifier]]
   $description[1;
