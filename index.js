@@ -59,8 +59,8 @@ loader.load(bot.cmd, "./commands/")
 const Lavalink = new aoijs.Lavalink(bot);
 
 Lavalink.addNode({
- url: "localhost:3535",
- password: "someStongPasswordHere",
+ url: "lava.link:80",
+ password: "neo",
  name: "Music",
  secure: false,
  })
