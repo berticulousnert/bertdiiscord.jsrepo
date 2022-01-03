@@ -1,4 +1,4 @@
-bot.command({
+module.exports = {
  name: "play",
  code: `
  $suppressErrors[Connection Error] Added $lavalinkExecute[songinfo;title] to queue
@@ -7,4 +7,4 @@ bot.command({
  $let[a;$lavalinkExecute[addtrack;$get[key];1]]
  $let[key;$lavalinkExecute[search;$message]]
  `
-});
+}

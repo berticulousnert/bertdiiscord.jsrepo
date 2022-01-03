@@ -118,20 +118,6 @@ name: "cache",
 code: `$cacheMembers[$guildID] $log[Cached $serverNames]` //Every servers value for 'hello' will be 'bye'
 })
 
-
-bot.command({
- name: "play",
- code: `
- $suppressErrors[Connection Error] Added $lavalinkExecute[songinfo;title] to queue
- $let[a;$lavalinkExecute[$replaceText[$replaceText[$lavalinkExecute[isIdling];true;play];false;volume]]]
- $log[$lavalinkExecute[isIdling]|$lavalinkExecute[isPlaying]|$lavalinkExecute[isPaused]]
- $let[a;$lavalinkExecute[addtrack;$get[key];1]]
- $let[key;$lavalinkExecute[search;$message]]
- $lavalinkExecute[connect]
- `
-});
-
-
 bot.command({
 name: "quote",
 code: ` $author[1;$userTag[$getMessage[$replaceText[$replaceText[$checkContains[$message;https://discord.com/channels/;https://ptb.discord.com/channels/];true;$splitText[6]];false;$mentionedChannels[1;yes]];$replaceText[$replaceText[$checkContains[$message;https://discord.com/channels/;https://ptb.discord.com/channels/];true;$splitText[7]];false;$noMentionMessage];userID]];$userAvatar[$getMessage[$replaceText[$replaceText[$checkContains[$message;https://discord.com/channels/;https://ptb.discord.com/channels/];true;$splitText[6]];false;$mentionedChannels[1;yes]];$replaceText[$replaceText[$checkContains[$message;https://discord.com/channels/;https://ptb.discord.com/channels/];true;$splitText[7]];false;$noMentionMessage];userID]]]
@@ -179,3 +165,17 @@ bot.command({
 //hi jalan wat yah doing?
 
 
+
+
+Lavalink.trackStartCommand({
+    channel: "$channelID",
+    code: `
+    $color[1;RANDOM]
+    $author[1;Track started - $lavalinkExecute[songinfo;title]]`
+});
+Lavalink.trackEndCommand({
+    channel: "$channelID",
+    code: `
+    $color[1;RANDOM]
+    $author[1;Track ended - $lavalinkExecute[songinfo;title]]`
+});
