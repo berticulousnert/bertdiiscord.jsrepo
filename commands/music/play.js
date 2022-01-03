@@ -1,11 +1,10 @@
-module.exports = {
-name: "play",
-aliases: ['p'],
-code: `
-Added queue 📥 $lavalinkExecute[songinfo;title] $lavalinkExecute[play;ytsearch:$message] 
-$onlyIf[$message!=;{newEmbed: {title:Error}{description:**⛔ I need Song name to find a** \`song\`...}}]
-$onlyIf[$voiceID!= <@!$clientID>;**⛔ You are Not in a Voice channel! Join a voice channel**]
-$onlyIf[$voiceID[$authorID]==$voiceID[$clientID];You need to use same voice channel as the bot!]
-$cooldown[5s;Wait **%time%** to use this command again]
-`
-}
+bot.command({
+ name: "play",
+ code: `
+ $suppressErrors[Connection Error] Added $lavalinkExecute[songinfo;title] to queue
+ $let[a;$lavalinkExecute[$replaceText[$replaceText[$lavalinkExecute[isIdling];true;play];false;volume]]]
+ $log[$lavalinkExecute[isIdling]|$lavalinkExecute[isPlaying]|$lavalinkExecute[isPaused]]
+ $let[a;$lavalinkExecute[addtrack;$get[key];1]]
+ $let[key;$lavalinkExecute[search;$message]]
+ `
+});
