@@ -17,13 +17,13 @@ const bot = new aoijs.Bot({
     },
 })
 
-/*const { AutoPoster } = require('topgg-autoposter')
+const { AutoPoster } = require('topgg-autoposter')
 
 const ap = AutoPoster(process.env.topggt, bot)
 
 ap.on('posted', () => {
   console.log('Posted stats to Top.gg!')
-})*/
+})
 
 const mongoose = require("mongoose")
 const dbdmongo = require("dbdjs.mongo").default
@@ -131,7 +131,7 @@ $suppressErrors[**⛔ Could not find message**]`
 
 bot.command({
  name: "timer",
- code: `$loop[1;count]
+ code: `$loop[1;{};count]
 $setUserVar[data;$get[messageID],$channelID]
 $djsEval[
 const parse = require('parse-duration')
