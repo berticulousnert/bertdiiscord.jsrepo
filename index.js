@@ -16,14 +16,17 @@ const bot = new aoijs.Bot({
         promisify:false
     },
 })
+const { Manager } = require("erela.js");
+const filter  = require("erela.js-filters");
+const Player = require("erela.js");
 
-const { AutoPoster } = require('topgg-autoposter')
+/*const { AutoPoster } = require('topgg-autoposter')
 
 const ap = AutoPoster(process.env.topggt, bot)
 
 ap.on('posted', () => {
   console.log('Posted stats to Top.gg!')
-})
+})*/
 
 const mongoose = require("mongoose")
 const dbdmongo = require("dbdjs.mongo").default
@@ -144,12 +147,13 @@ $argsCheck[1;***ADD AN ARG!!!***]`
 
 bot.awaitedCommand({
  name: "count",
+ if: "v4",
  code: `$if[$getUserVar[time]!=0]
-$loop[1;count]
+$loop[1;{};count]
 $editMessage[$advancedTextSplit[$getUserVar[data];,1];$getUserVar[time];$advancedTextSplit[$getUserVar[data];,;2]]
 $setUserVar[time;$sub[$getUserVar[time];1]]
 $else
-$editMessage[$advancedTextSplit[$getUserVar[data];,1];<@$authorID> Timer Ended;$advancedTextSplit[$getUserVar[data];,;2]] $suppressErrors[Please only say a number]
+$editMessage[$advancedTextSplit[$getUserVar[data];,1];sting;$advancedTextSplit[$getUserVar[data];,;2]]
 $endif
 $wait[1s]
 `
@@ -158,7 +162,7 @@ $wait[1s]
 bot.command({
   name: "support",
   code: `$author[1;Why not join?] $description[1;[Support server](https://discord.gg/74FbuXsBHb 'join noob') go brrr] 
-  $color[RANDOM]
+  $color[1;RANDOM]
   $footer[1;Support server| https://discord.gg/74FbuXsBHb]`
 })
 
@@ -179,3 +183,9 @@ Lavalink.trackEndCommand({
     $color[1;RANDOM]
     $author[1;Track ended - $lavalinkExecute[songinfo;title]]`
 });
+
+
+bot.onGuildJoin({
+  name: "",
+  codeL `$giveRole[$authorID;838534821064081469] $log[Gave $userTag[$authorID] Member role] $onlyif[$guildID==821998081691746304;]`
+})
