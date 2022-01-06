@@ -76,7 +76,8 @@ bot.variables({
     data: "",
     time: "",
     bl: "",
-    variable: ""
+    variable: "",
+    autojoinrole: ""
   })
   
 
@@ -184,8 +185,3 @@ Lavalink.trackEndCommand({
     $author[1;Track ended - $lavalinkExecute[songinfo;title]]`
 });
 
-
-bot.joinCommand({
-  name: "",
-  code: `$giveRole[$authorID;838534821064081469] $log[Gave $userTag[$authorID] Member role] $onlyif[$guildID==821998081691746304;]`
-})
