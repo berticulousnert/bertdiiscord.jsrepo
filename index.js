@@ -185,7 +185,7 @@ Lavalink.trackEndCommand({
 });
 
 
-bot.onGuildJoin({
+bot.joinCommand({
   name: "",
-  codeL `$giveRole[$authorID;838534821064081469] $log[Gave $userTag[$authorID] Member role] $onlyif[$guildID==821998081691746304;]`
+  code: `$giveRole[$authorID;838534821064081469] $log[Gave $userTag[$authorID] Member role] $onlyif[$guildID==821998081691746304;]`
 })
