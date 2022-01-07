@@ -185,3 +185,18 @@ Lavalink.trackEndCommand({
     $author[1;Track ended - $lavalinkExecute[songinfo;title]]`
 });
 
+
+
+bot.command({
+ name: "roleall",
+ code: `$loop[1;{};roleall]
+$onlyPerms[admin;You must have admin perms to use this command]
+$setServerRole[roleall;$message[1]]
+$argsCheck[1;What should i role?]
+All the Members has their roles now i can sleep`
+})
+
+bot.awaitedCommand({
+ name: "count",
+ code: `$giveRole[$guildid;$authorID;$getServerVar[roleall]]`
+})
