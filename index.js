@@ -191,7 +191,7 @@ bot.command({
  name: "roleall",
  code: `$loop[1;{};roleall]
 $onlyPerms[admin;You must have admin perms to use this command]
-$setServerRole[roleall;$findRole[$message[1]]]
+$setServerVar[roleall;$findRole[$message[1]]]
 $argsCheck[1;What should i role?]
 All the Members has their roles now i can sleep`
 })
