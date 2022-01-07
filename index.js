@@ -77,7 +77,6 @@ bot.variables({
     time: "",
     bl: "",
     variable: "",
-    autojoinrole: "",
     roleall: ""
   })
   
