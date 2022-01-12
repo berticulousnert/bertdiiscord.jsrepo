@@ -17,13 +17,13 @@ const bot = new aoijs.Bot({
     },
 })
 
-const { AutoPoster } = require('topgg-autoposter')
+/*const { AutoPoster } = require('topgg-autoposter')
 
 const ap = AutoPoster(process.env.topggt, bot)
 
 ap.on('posted', () => {
   console.log('Posted stats to Top.gg!')
-})
+})*/
 
 const mongoose = require("mongoose")
 const dbdmongo = require("dbdjs.mongo").default
@@ -131,13 +131,13 @@ bot.command({
 
 bot.command({
  name: "roleall",
- code: `$loop[1;{};roleall]
+ code: `$ForEachMember[1;{};roleall]
 $onlyPerms[admin;You must have admin perms to use this command]
 $setServerVar[roleall;$findRole[$message[1]]]
-$argsCheck[1;What should i role?]`
+$argsCheck[1;What should i role?] $suppressErrors[Error]`
 })
 
 bot.awaitedCommand({
  name: "roleall",
- code: `$onlyBotPerms[manageroles;Bozo i don't have manage roles perms.] $giveRole[$guildid;$authorID;$getServerVar[roleall]] All memebers has been rick rolled Oops i ment roled`
+ code: `$onlyBotPerms[manageroles;Bozo i don't have manage roles perms.] $giveRole[$guildid;$authorID;$getServerVar[roleall]] All memebers has been rick rolled Oops i ment roled $suppressErrors[Errors]`
 })
