@@ -17,7 +17,7 @@ const bot = new aoijs.Bot({
     },
 })
 
-/const { AutoPoster } = require('topgg-autoposter')
+const { AutoPoster } = require('topgg-autoposter')
 
 const ap = AutoPoster(process.env.topggt, bot)
 
