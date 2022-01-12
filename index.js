@@ -16,17 +16,14 @@ const bot = new aoijs.Bot({
         promisify:false
     },
 })
-const { Manager } = require("erela.js");
-const filter  = require("erela.js-filters");
-const Player = require("erela.js");
 
-/*const { AutoPoster } = require('topgg-autoposter')
+/const { AutoPoster } = require('topgg-autoposter')
 
 const ap = AutoPoster(process.env.topggt, bot)
 
 ap.on('posted', () => {
   console.log('Posted stats to Top.gg!')
-})*/
+})
 
 const mongoose = require("mongoose")
 const dbdmongo = require("dbdjs.mongo").default
@@ -95,32 +92,22 @@ bot.status({
     text: "$allMembersCount members",
     type: "WATCHING",
     status: "idle",
-    time: 12
+    time: 3
   })
 
   bot.status({
     text: "$serverCount guilds",
     type: "WATCHING",
     status: "idle",
-    time: 12
+    time: 3
   })
 
   bot.status({
     text: "Prefix: .",
     type: "WATCHING",
     status: "idle",
-    time: 12
+    time: 3
   })
-
-bot.command({
-name: "cache",
-code: "$forEachGuild[1;{};cache]"
-})
-
-bot.awaitedCommand({
-name: "cache",
-code: `$cacheMembers[$guildID] $log[Cached $serverNames]` //Every servers value for 'hello' will be 'bye'
-})
 
 bot.command({
 name: "quote",
@@ -134,56 +121,11 @@ $suppressErrors[**⛔ Could not find message**]`
 })
 
 bot.command({
- name: "timer",
- code: `$loop[1;{};count]
-$setUserVar[data;$get[messageID],$channelID]
-$djsEval[
-const parse = require('parse-duration')
-let secs = parse(d.args[0], 's')
-d.client.db.set("main", 'time_' + d.message.guild.id + '_' + d.message.author.id, secs)
-]
-$let[messageID;$channelSendMessage[$channelID;$message[1];yes]]
-$argsCheck[1;***ADD AN ARG!!!***]`
-})
-
-bot.awaitedCommand({
- name: "count",
- if: "v4",
- code: `$if[$getUserVar[time]!=0]
-$loop[1;{};count]
-$editMessage[$advancedTextSplit[$getUserVar[data];,1];$getUserVar[time];$advancedTextSplit[$getUserVar[data];,;2]]
-$setUserVar[time;$sub[$getUserVar[time];1]]
-$else
-$editMessage[$advancedTextSplit[$getUserVar[data];,1];sting;$advancedTextSplit[$getUserVar[data];,;2]]
-$endif
-$wait[1s]
-`
-})
-
-bot.command({
   name: "support",
   code: `$author[1;Why not join?] $description[1;[Support server](https://discord.gg/74FbuXsBHb 'join noob') go brrr] 
   $color[1;RANDOM]
   $footer[1;Support server| https://discord.gg/74FbuXsBHb]`
 })
-
-//hi jalan wat yah doing?
-
-
-
-
-Lavalink.trackStartCommand({
-    channel: "$channelID",
-    code: `
-    $color[1;RANDOM]
-    $author[1;Track started - $lavalinkExecute[songinfo;title]]`
-});
-Lavalink.trackEndCommand({
-    channel: "$channelID",
-    code: `
-    $color[1;RANDOM]
-    $author[1;Track ended - $lavalinkExecute[songinfo;title]]`
-});
 
 
 
@@ -192,11 +134,10 @@ bot.command({
  code: `$loop[1;{};roleall]
 $onlyPerms[admin;You must have admin perms to use this command]
 $setServerVar[roleall;$findRole[$message[1]]]
-$argsCheck[1;What should i role?]
-All the Members has their roles now i can sleep`
+$argsCheck[1;What should i role?]`
 })
 
 bot.awaitedCommand({
  name: "roleall",
- code: `$giveRole[$guildid;$authorID;$getServerVar[roleall]]`
+ code: `$onlyBotPerms[manageroles;Bozo i don't have manage roles perms.] $giveRole[$guildid;$authorID;$getServerVar[roleall]] All memebers has been rick rolled Oops i ment roled`
 })
