@@ -17,6 +17,7 @@ const bot = new aoijs.Bot({
     },
 })
 
+
 /*const { AutoPoster } = require('topgg-autoposter')
 
 const ap = AutoPoster(process.env.topggt, bot)
@@ -134,10 +135,13 @@ bot.command({
  code: `$ForEachMember[1;{};roleall]
 $onlyPerms[admin;You must have admin perms to use this command]
 $setServerVar[roleall;$findRole[$message[1]]]
-$argsCheck[1;What should i role?] $suppressErrors[Error]`
+$argsCheck[1;What should i role?] `
 })
 
 bot.awaitedCommand({
  name: "roleall",
- code: `$onlyBotPerms[manageroles;Bozo i don't have manage roles perms.] $giveRole[$guildid;$authorID;$getServerVar[roleall]] All memebers has been rick rolled Oops i ment roled $suppressErrors[Errors]`
+ code: `$giveRoles[$guildid;$guildID;$getServerVar[roleall]] $onlyBotPerms[admin;Bozo i don't have manage roles perms.] All memebers has been rick rolled Oops i ment roled `
 })
+
+//`All memebers has been rick rolled Oops i ment roled  $giveRoles[$guildid;$authorID;$getServerVar[roleall]] $onlyBotPerms[admin;Bozo i don't have manage roles perms.]
+

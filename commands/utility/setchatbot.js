@@ -13,11 +13,11 @@ $onlyIf[$findChannel[$message;no]!=undefined;{newEmbed:{description:❌ Invalid 
 Usage:
 set-chatbot <channel name | mention>}{color:RED}}]
 
-$onlyIf[$message!=;{newEmbed:{description:❌ Invalid Args
+$onlyIf[$message!=;{newEmbed: {description:❌ Invalid Args
 Usage:
 set-chatbot <channel mention | channel name | channel ID>}{color:RED}}]
 
-$onlyIf[$findChannel[$message;no]!=$getServerVar[cbChannel];{newEmbed:{description:❌ Chat bot is already active in <#$findChannel[$message;no]>}{color:RED}}]
+$onlyIf[$findChannel[$message;no]!=$getServerVar[cbChannel];{newEmbed: {description:❌ Chat bot is already active in <#$findChannel[$message;no]>}{color:RED}}]
 
 $onlyPerms[manageserver;{newEmbed:{description: Missing
 Manage_Server Perms}{color:RED}}]
