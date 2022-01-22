@@ -42,7 +42,7 @@ dbdmongo.createModel("main")
 const express = require('express')
 const app = express()
 app.get('/', async (req, res) => {
-  res.send('Up and running')
+  res.sendFile(__dirname + '/index.html')
 })
 app.listen(3000, () => console.log('Expresso!'))
 
@@ -75,9 +75,43 @@ bot.variables({
     time: "",
     bl: "",
     variable: "",
-    roleall: ""
+    roleall: "",
+   ticketid: "",
+   ticketcat: "",
+   ticketmessage: "",
+   ticketafteropenmessage: "",
+   ticketsystem1: "x",
+   ticketchannelname: "", 	
+   host: "",
+   win: "",
+   date: "",
+   time: "",
+   prize: ""
   })
   
+
+bot.functionManager.createCustomFunction({
+name: "$transcript",
+type: "djs",
+code: async d => {
+ const data = d.util.openFunc(d)
+ 
+
+const discordTranscripts = require('discord-html-transcripts');
+
+const channel = d.message.channel; // or however you get your TextChannel
+
+// Must be awaited
+const attachment = await discordTranscripts.createTranscript(d.message.channel);
+
+channel.send({
+ files: [attachment]
+});  
+return {
+code: d.util.setCode(data)
+}
+}
+}) 
 
     bot.readyCommand({
     channel: "",
@@ -87,6 +121,7 @@ $blacklistError[globalUser;Imagine trying to use bert command]
 $textSplit[$getVar[bl];/]
  `
 })
+
 
 
 bot.status({
