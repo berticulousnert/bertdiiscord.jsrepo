@@ -42,9 +42,9 @@ dbdmongo.createModel("main")
 const express = require('express')
 const app = express()
 app.get('/', async (req, res) => {
-  res.sendFile(__dirname + '/index.html')
+  res.send('Bot is online')
 })
-app.listen(3000, () => console.log('Expresso!'))
+app.listen(4000, () => console.log('Expresso!'))
 
 //Events
 bot.onInteractionCreate()
@@ -86,7 +86,12 @@ bot.variables({
    win: "",
    date: "",
    time: "",
-   prize: ""
+   prize: "",
+   channelbackupname: "",
+   channelbackuptopic: "",
+   channelbackuptype: "",
+   channelbackupposition: "",
+  categorubackupid: ""
   })
   
 
@@ -144,6 +149,34 @@ bot.status({
     status: "idle",
     time: 3
   })
+
+
+  bot.command({
+    name: "backup",
+    code: `$forEachGuildChannel[1;{};backup;] $onlyif[$authorID==$botownerID;Owner only for now]`
+})
+
+bot.awaitedCommand({
+name: "backup",
+code: `Backup has been set $setServerVar[channelbackupname;$channel[$channellID;name]] $setServerVar[channelbackuptopic;$channel[$channellID;topic]] $setServerVar[channelbackupposition;$channel[$channellID;position]] $setServerVar[channelbackuptype;$channel[$channelIID;type]] $setServerVar[categorubackupid;$channelCategoryID[$channellID]]`
+});
+
+
+//$channelCategoryID[channel ID (Optional)]
+
+bot.awaitedCommand({
+name: "backup-restore",
+code: `Set tight while i fix the server for someone lazy $djsEval[channel.delete()]`
+});
+
+//$djsEval[message.channel.delete()]
+
+  bot.command({
+    name: "backup-restore",
+    code: `Set tight while i fix the server for someone lazy $onlyif[$authorID==$botownerID;Owner only for now] $forEachGuildChannel[1;{};backup-restore;]`
+  });
+
+  //$forEachGuildChannel[1;{};backup-restore] 
 
 bot.command({
 name: "quote",

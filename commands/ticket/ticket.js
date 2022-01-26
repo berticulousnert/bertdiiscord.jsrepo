@@ -3,7 +3,7 @@ name: "ticketsetup",
 $if: "v4",
 code: `
 $if[$getServerVar[ticketsystem1]==done]
-$title[1;This sections has already been setup.To reset it, please do $getServerVar[prefix]resetticket
+$title[1;This sections has already been setup. To reset it, please do $getServerVar[prefix]resetticket
 ]
 $else
 $title[1;Please give me the ticket category ID]
@@ -21,7 +21,7 @@ $color[1;00FF00]
 $footer[1;$serverName | $userTag[$clientID]]
 $addTimestamp[1]
 $title[2;Ticket Message]
-$description[2;Please tell me the message you want to say for the ticket opening  button embed]
+$description[2;Please tell me the message you want to say for the ticket opening  button embed, You have 60s]
 $color[2;FFA500]$footer[1;$serverName | $userTag[$clientID]]
 $addTimestamp[1]
 $awaitMessages[$channelID;$authorID;60s;everything;ticketmessage;Command has been cancelled]
@@ -38,7 +38,7 @@ $color[1;00FF00]
 $footer[1;$serverName | $userTag[$clientID]]
 $addTimestamp[1]
 $title[2;Ticket Message after opened]
-$description[2;Please tell me the message tou want to say for the ticket after opening the ticket]
+$description[2;Please tell me the message you want to say for the ticket after opening the ticket, You have 60s]
  
 $color[2;FFA500]
 $footer[1;$serverName | $userTag[$clientID]]
