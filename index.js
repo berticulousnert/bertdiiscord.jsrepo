@@ -54,6 +54,19 @@ bot.onBanAdd
 bot.onBanRemove
 bot.onGuildLeave()
 bot.onGuildJoin()
+bot.onLeave() 
+bot.onJoin() 
+bot.onBanAdd() 
+bot.onBanRemove() 
+bot.onInviteCreate() 
+bot.onInviteDelete() 
+bot.onChannelCreate() 
+bot.onChannelDelete() 
+bot.onChannelUpdate() 
+bot.onRoleCreate() 
+bot.onRoleDelete() 
+bot.onRoleUpdate() 
+
 const loader = new aoijs.LoadCommands(bot)
 loader.load(bot.cmd, "./commands/")
 
@@ -91,9 +104,87 @@ bot.variables({
    channelbackuptopic: "",
    channelbackuptype: "",
    channelbackupposition: "",
-  categorubackupid: ""
+  categorubackupid: "",
+  logchannel: ""
   })
   
+  bot.channelCreateCommand({ //Command
+channel: "$getServerVar[logchannel]", //Channel where its being logged
+code: `$addTimeStamp[1] $title[1;Channel Create] $description[1; <#$newChannel[id]>\n **Options**:\n **ID: $newChannel[id]\n Name: $newChannel[name]\n Type: $newChannel[type]\n Nsfw: $newChannel[nsfw]**] $color[1;RANDOM]`
+})
+
+bot.channelDeleteCommand({ 
+channel: "$getServerVar[logchannel]", 
+code: `$title[1; Channel Delete]
+$description[1;**<#$oldChannel[id]>\n **Options**:\n ID: $oldChannel[id]\n Name: $oldChannel[name]\n Type: $oldChannel[type]\n Was Nsfw: $oldChannel[nsfw]**] $color[1;RANDOM]`
+})
+
+bot.channelUpdateCommand({ 
+channel: "$getServerVar[logchannel]", 
+code: `
+$title[1;Channel Update]
+$description[1; <#$newChannel[id]>\n **Options**:\n **ID: Before: $oldChannel[id] After: $newChannel[id]\n Name: before: $oldChannel[name] After: $newChannel[name]\n Type: Before: $oldChannel[type] After: $newChannel[type]\n Nsfw: before: $oldChannel[nsfw] After: $newChannel[nsfw]\n Slowmode: $newChannel[slowmode]\n Send Message: $djsEval[guild.roles.everyone.permissionsIn(channel).toArray().includes('SEND_MESSAGES');;yes]\n Viewable: $djsEval[guild.roles.everyone.permissionsIn(channel).toArray().includes('VIEW_CHANNEL');;yes]**] $color[1;RANDOM]
+`
+})
+
+bot.leaveCommand({ 
+        channel: "$getServerVar[logchannel]", 
+        code: `$title[1;Member left] $description[1;$username Left the server] $color[1;RANDOM]`
+        /*
+                Code Breakdown
+        $serverName - The name of the server the user left
+        $username - The user who left the server
+        */
+})
+
+bot.joinCommand({ 
+        channel: "$getServerVar[logchannel]", 
+        code: `$title[1;Member Joined] $description[1;$username Joined the server] $color[1;RANDOM]`
+        /*
+                Code Breakdown
+        $serverName - The name of the server the user left
+        $username - The user who left the server
+        */
+})
+
+bot.roleCreateCommand({ 
+channel: "$getServerVar[logchannel]", 
+code: `
+$title[1;Role Create] $description[1; <@&$newRole[id]>\n **Options**\n **Name: $newRole[name]\n Hex: $newRole[hexColor]\n Mentionable: $newRole[mentionable]\n Permissions: $newRole[permissions]**] $color[1;$newRole[hexColor]]
+`
+})
+
+bot.roleDeleteCommand({ 
+channel: "$getServerVar[logchannel]", 
+code: `
+$title[1;Role Delete] $description[1; <@&$oldRole[id]>\n **Options**\n **Name: $oldRole[name]\n Hex: $oldRole[hexColor]\n Mentionable: $oldRole[mentionable]\n Permissions: $oldRole[permissions]**] $color[1;$oldRole[hexColor]]`
+})
+
+bot.roleUpdateCommand({ 
+channel: "$getServerVar[logchannel]", 
+code: `
+$title[1;Role Update] $description[1;**Options**\n **Name: Before: $oldRole[name] After: $newRole[name] \n Hex: Before: $oldRole[hexColor] After: $newRole[hexColor]\n Mentionable: Before: $oldRole[mentionable] After: $newRole[mentionable]\n Permissions: Before: $oldRole[permissions]\n After: $newRole[permissions]**] $color[1;$oldRole[hexColor]]
+`
+})
+
+bot.banAddCommand({ 
+channel: "$getServerVar[logchannel]", //Add getServerVar to get the servers log channel (if they set it ofcourse)
+code: `
+$title[1;Ban] $description[1;Author: $authorid\n Banned user: $username\n Server: "$serverName"]
+`
+})
+
+bot.banRemoveCommand({ 
+channel: "$getServerVar[logchannel]", //Add getServerVar to get the servers log channel (if they set it ofcourse)
+code: `
+$title[1;Ban] $description[1;Author: $authorid\n unBanned user: $username\n Server: "$serverName"]
+`
+})
+
+
+
+
+
 
 bot.functionManager.createCustomFunction({
 name: "$transcript",
