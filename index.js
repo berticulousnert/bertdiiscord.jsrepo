@@ -105,31 +105,33 @@ bot.variables({
    channelbackuptype: "",
    channelbackupposition: "",
   categorubackupid: "",
-  logchannel: ""
+  logchannel: "",
+  banmessage: "No Reason Provided",
+  kickmessage: "No Reason Provided"
   })
   
   bot.channelCreateCommand({ //Command
 channel: "$getServerVar[logchannel]", //Channel where its being logged
-code: `$addTimeStamp[1] $title[1;Channel Create] $description[1; <#$newChannel[id]>\n **Options**:\n **ID: $newChannel[id]\n Name: $newChannel[name]\n Type: $newChannel[type]\n Nsfw: $newChannel[nsfw]**] $color[1;RANDOM]`
+code: `$addTimeStamp[1] $title[1;Channel Create] $description[1; <#$newChannel[id]>\n **Options**:\n **ID: $newChannel[id]\n Name: $newChannel[name]\n Type: $newChannel[type]\n Nsfw: $newChannel[nsfw]**] $color[1;RANDOM] $onlyif[$getServerVar[logchannel]!=;]`
 })
 
 bot.channelDeleteCommand({ 
 channel: "$getServerVar[logchannel]", 
 code: `$title[1; Channel Delete]
-$description[1;**<#$oldChannel[id]>\n **Options**:\n ID: $oldChannel[id]\n Name: $oldChannel[name]\n Type: $oldChannel[type]\n Was Nsfw: $oldChannel[nsfw]**] $color[1;RANDOM]`
+$description[1;**<#$oldChannel[id]>\n **Options**:\n ID: $oldChannel[id]\n Name: $oldChannel[name]\n Type: $oldChannel[type]\n Was Nsfw: $oldChannel[nsfw]**] $color[1;RANDOM] $onlyif[$getServerVar[logchannel]!=;]`
 })
 
 bot.channelUpdateCommand({ 
 channel: "$getServerVar[logchannel]", 
 code: `
 $title[1;Channel Update]
-$description[1; <#$newChannel[id]>\n **Options**:\n **ID: Before: $oldChannel[id] After: $newChannel[id]\n Name: before: $oldChannel[name] After: $newChannel[name]\n Type: Before: $oldChannel[type] After: $newChannel[type]\n Nsfw: before: $oldChannel[nsfw] After: $newChannel[nsfw]\n Slowmode: $newChannel[slowmode]\n Send Message: $djsEval[guild.roles.everyone.permissionsIn(channel).toArray().includes('SEND_MESSAGES');;yes]\n Viewable: $djsEval[guild.roles.everyone.permissionsIn(channel).toArray().includes('VIEW_CHANNEL');;yes]**] $color[1;RANDOM]
+$description[1; <#$newChannel[id]>\n **Options**:\n **ID: Before: $oldChannel[id] After: $newChannel[id]\n Name: before: $oldChannel[name] After: $newChannel[name]\n Type: Before: $oldChannel[type] After: $newChannel[type]\n Nsfw: before: $oldChannel[nsfw] After: $newChannel[nsfw]\n Slowmode: $newChannel[slowmode]\n Send Message: $djsEval[guild.roles.everyone.permissionsIn(channel).toArray().includes('SEND_MESSAGES');;yes]\n Viewable: $djsEval[guild.roles.everyone.permissionsIn(channel).toArray().includes('VIEW_CHANNEL');;yes]**] $color[1;RANDOM] $onlyif[$getServerVar[logchannel]!=;]
 `
 })
 
 bot.leaveCommand({ 
         channel: "$getServerVar[logchannel]", 
-        code: `$title[1;Member left] $description[1;$username Left the server] $color[1;RANDOM]`
+        code: `$title[1;Member left] $description[1;$username Left the server] $color[1;RANDOM] $onlyif[$getServerVar[logchannel]!=;]`
         /*
                 Code Breakdown
         $serverName - The name of the server the user left
@@ -139,7 +141,7 @@ bot.leaveCommand({
 
 bot.joinCommand({ 
         channel: "$getServerVar[logchannel]", 
-        code: `$title[1;Member Joined] $description[1;$username Joined the server] $color[1;RANDOM]`
+        code: `$title[1;Member Joined] $description[1;$username Joined the server] $color[1;RANDOM] $onlyif[$getServerVar[logchannel]!=;]`
         /*
                 Code Breakdown
         $serverName - The name of the server the user left
@@ -150,7 +152,7 @@ bot.joinCommand({
 bot.roleCreateCommand({ 
 channel: "$getServerVar[logchannel]", 
 code: `
-$title[1;Role Create] $description[1; <@&$newRole[id]>\n **Options**\n **Name: $newRole[name]\n Hex: $newRole[hexColor]\n Mentionable: $newRole[mentionable]\n Permissions: $newRole[permissions]**] $color[1;$newRole[hexColor]]
+$title[1;Role Create] $description[1; <@&$newRole[id]>\n **Options**\n **Name: $newRole[name]\n Hex: $newRole[hexColor]\n Mentionable: $newRole[mentionable]\n Permissions: $newRole[permissions]**] $color[1;$newRole[hexColor]] $onlyif[$getServerVar[logchannel]!=;]
 `
 })
 
@@ -163,21 +165,21 @@ $title[1;Role Delete] $description[1; <@&$oldRole[id]>\n **Options**\n **Name: $
 bot.roleUpdateCommand({ 
 channel: "$getServerVar[logchannel]", 
 code: `
-$title[1;Role Update] $description[1;**Options**\n **Name: Before: $oldRole[name] After: $newRole[name] \n Hex: Before: $oldRole[hexColor] After: $newRole[hexColor]\n Mentionable: Before: $oldRole[mentionable] After: $newRole[mentionable]\n Permissions: Before: $oldRole[permissions]\n After: $newRole[permissions]**] $color[1;$oldRole[hexColor]]
+$title[1;Role Update] $description[1;**Options**\n **Name: Before: $oldRole[name] After: $newRole[name] \n Hex: Before: $oldRole[hexColor] After: $newRole[hexColor]\n Mentionable: Before: $oldRole[mentionable] After: $newRole[mentionable]\n Permissions: Before: $oldRole[permissions]\n After: $newRole[permissions]**] $color[1;$oldRole[hexColor]] $onlyif[$getServerVar[logchannel]!=;]
 `
 })
 
 bot.banAddCommand({ 
 channel: "$getServerVar[logchannel]", //Add getServerVar to get the servers log channel (if they set it ofcourse)
 code: `
-$title[1;Ban] $description[1;Author: $authorid\n Banned user: $username\n Server: "$serverName"]
+$title[1;Ban] $description[1;Author: $userTag[$authorid]\n Victim: $username\n Reason: $getServerVar[banmessage]] $onlyif[$getServerVar[logchannel]!=;]
 `
 })
 
 bot.banRemoveCommand({ 
 channel: "$getServerVar[logchannel]", //Add getServerVar to get the servers log channel (if they set it ofcourse)
 code: `
-$title[1;Ban] $description[1;Author: $authorid\n unBanned user: $username\n Server: "$serverName"]
+$title[1;Ban] $description[1;Responsible moderator: $userTag[$authorid]\n Offender: $username\n Reason Of ban: $getServerVar[banmessage]] $onlyif[$getServerVar[logchannel]!=;]
 `
 })
 

@@ -1,6 +1,6 @@
 module.exports = {
  name:"ban",
- code: `$ban[$mentioned[1];$guildID;0;$if[$noMentionMessage==;Not Privded;$noMentionMessage]]
+ code: `$setServerVar[banmessage;$noMentionMessage] $ban[$mentioned[1];$guildID;0;$if[$noMentionMessage==;Not Privded;$noMentionMessage]]
  $title[1;Member Banned!]
  $description[1;<@$authorID> banned <@$mentioned[1]>
  Reason: $if[$noMentionMessage==;Not Privded;$noMentionMessage]
