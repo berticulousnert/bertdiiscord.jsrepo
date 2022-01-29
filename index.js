@@ -1,8 +1,7 @@
 const aoijs = require("aoi.js")
 //online epik gamer moment
 const bot = new aoijs.Bot({
-  token: process.env[
-    "token"]
+  token: process.env.token
 , //Discord Bot Token
   prefix: ['$getServerVar[prefix]','<@!$clientID>'],
   shardAmmount: 200,
@@ -142,11 +141,6 @@ bot.leaveCommand({
 bot.joinCommand({ 
         channel: "$getServerVar[logchannel]", 
         code: `$title[1;Member Joined] $description[1;$username Joined the server] $color[1;RANDOM] $onlyif[$getServerVar[logchannel]!=;]`
-        /*
-                Code Breakdown
-        $serverName - The name of the server the user left
-        $username - The user who left the server
-        */
 })
 
 bot.roleCreateCommand({ 
@@ -172,7 +166,7 @@ $title[1;Role Update] $description[1;**Options**\n **Name: Before: $oldRole[name
 bot.banAddCommand({ 
 channel: "$getServerVar[logchannel]", //Add getServerVar to get the servers log channel (if they set it ofcourse)
 code: `
-$title[1;Ban] $description[1;Author: $userTag[$authorid]\n Victim: $username\n Reason: $getServerVar[banmessage]] $onlyif[$getServerVar[logchannel]!=;]
+$title[1;Ban] $description[1;Responsible moderator: $userTag[$authorid]\n Offender: $username\n Reason: $getServerVar[banmessage]] $onlyif[$getServerVar[logchannel]!=;]
 `
 })
 

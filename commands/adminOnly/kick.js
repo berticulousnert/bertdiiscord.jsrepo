@@ -1,6 +1,7 @@
 module.exports = {
  name:"kick",
- code: `$setServerVar[kickmessage;$noMentionMessage] $kick[$mentioned[1];$guildID;0;$if[$noMentionMessage==;Not Privded;$noMentionMessage]]
+ if: "v4",
+ code: ` $channelSendMessage[$getServerVar[logchannel];{newEmbed:{description:kick | case }{field:Offender:$userTag[$mentioned[1]] <@$mentioned[1]>}{field:Reason: $getServerVar[kickmessage]}{field:Responsible moderator: $userTag}{color:BLUE}{footer:ID#COLON# $mentioned[1]}{timestamp}] $if[$getServerVar[logchannel==;]] $endif $setServerVar[kickmessage;$noMentionMessage] $kick[$mentioned[1];$guildID;0;$if[$noMentionMessage==;Not Privded;$noMentionMessage]]
  $title[1;Member kicked!]
  $description[1;<@$authorID> kicked <@$mentioned[1]>
  Reason: $if[$noMentionMessage==;Not Privded;$noMentionMessage]
