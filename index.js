@@ -54,7 +54,6 @@ bot.onBanRemove
 bot.onGuildLeave()
 bot.onGuildJoin()
 bot.onLeave() 
-bot.onJoin() 
 bot.onBanAdd() 
 bot.onBanRemove() 
 bot.onInviteCreate() 
@@ -106,7 +105,8 @@ bot.variables({
   categorubackupid: "",
   logchannel: "",
   banmessage: "No Reason Provided",
-  kickmessage: "No Reason Provided"
+  kickmessage: "No Reason Provided",
+  banauthor: ""
   })
   
   bot.channelCreateCommand({ //Command
@@ -164,16 +164,16 @@ $title[1;Role Update] $description[1;**Options**\n **Name: Before: $oldRole[name
 })
 
 bot.banAddCommand({ 
-channel: "$getServerVar[logchannel]", //Add getServerVar to get the servers log channel (if they set it ofcourse)
+channel: "$getServerVar[logchannel]", 
 code: `
-$title[1;Ban] $description[1;Responsible moderator: $userTag[$authorid]\n Offender: $username\n Reason: $getServerVar[banmessage]] $onlyif[$getServerVar[logchannel]!=;]
+$title[1;Ban] $description[1;Ban | Case ] $addfield[1;Responsible moderator:; <@$getUserVar[banauthor]>]\n $addfield[1;Offender:; $username]\n $addfield[1;Reason:;$getUserVar[banmessage]] $onlyif[$getServerVar[logchannel]!=;]
 `
 })
 
 bot.banRemoveCommand({ 
-channel: "$getServerVar[logchannel]", //Add getServerVar to get the servers log channel (if they set it ofcourse)
+channel: "$getServerVar[logchannel]", 
 code: `
-$title[1;Ban] $description[1;Responsible moderator: $userTag[$authorid]\n Offender: $username\n Reason Of ban: $getServerVar[banmessage]] $onlyif[$getServerVar[logchannel]!=;]
+$title[1;Unban] $description[1;Unban | Case ] $addfield[1; Responsible moderator:; <@$getUserVar[banauthor]>]\n $addfield[1;Offender:; $username]\n $addfield[1;Reason Of ban:;$getUserVar[banmessage]] $onlyif[$getServerVar[logchannel]!=;]
 `
 })
 

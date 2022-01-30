@@ -1,9 +1,10 @@
 module.exports = {
  name:"ban",
- code: `$setServerVar[banmessage;$noMentionMessage] $ban[$mentioned[1];$guildID;0;$if[$noMentionMessage==;Not Privded;$noMentionMessage]]
+ code: `$setUserVar[banauthor;$authorID] $setUserVar[banmessage;$noMentionMessage;$findMember[$mentioned[1]];$guildID] $ban[$mentioned[1];$guildID;0;$if[$noMentionMessage==;Not Provided;$noMentionMessage]] $resetUserVar[banmessage]
+ $resetUserVar[banauthor]
  $title[1;Member Banned!]
  $description[1;<@$authorID> banned <@$mentioned[1]>
- Reason: $if[$noMentionMessage==;Not Privded;$noMentionMessage]
+ Reason: $if[$noMentionMessage==;Not Provided;$noMentionMessage]
  $color[1;RED]
  $onlyIf[$rolePosition[$highestRole[$authorID]]<$rolePosition[$highestRole[$mentioned[1]]];You can't ban someone with a higher role than you]
  $onlyIf[$highestRole[$mentioned[1]]!=$highestRole[$authorID];You can't ban someone with the same highest role]

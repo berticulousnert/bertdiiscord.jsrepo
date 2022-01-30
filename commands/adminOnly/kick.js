@@ -1,7 +1,7 @@
 module.exports = {
  name:"kick",
- if: "v4",
- code: ` $channelSendMessage[$getServerVar[logchannel];{newEmbed:{description:kick | case }{field:Offender:$userTag[$mentioned[1]] <@$mentioned[1]>}{field:Reason: $getServerVar[kickmessage]}{field:Responsible moderator: $userTag}{color:BLUE}{footer:ID#COLON# $mentioned[1]}{timestamp}] $if[$getServerVar[logchannel==;]] $endif $setServerVar[kickmessage;$noMentionMessage] $kick[$mentioned[1];$guildID;0;$if[$noMentionMessage==;Not Privded;$noMentionMessage]]
+ if:"v4",
+ code: `$setUserVar[kickmessage;$noMentionMessage;$findMember[$mentioned[1];$guildID] $resetUserVar[kickmessage] $resetUserVar[kickauthor] $channelSendMessage[$getServerVar[logchannel];{newEmbed:{description:kick | case }{field:Offender:$userTag[$mentioned[1]] <@$mentioned[1]>}{field:Reason: $getServerVar[kickmessage]}{field:Responsible moderator: $userTag}{color:BLUE}{footer:ID#COLON# $mentioned[1]}{timestamp}] $if[$getServerVar[logchannel]==;]] $endif $kick[$mentioned[1];$guildID;0;$if[$noMentionMessage==;Not Reason Provided;$noMentionMessage]]
  $title[1;Member kicked!]
  $description[1;<@$authorID> kicked <@$mentioned[1]>
  Reason: $if[$noMentionMessage==;Not Privded;$noMentionMessage]
@@ -15,5 +15,5 @@ module.exports = {
  $onlyIf[$mentioned[1]!=$clientID;I can't kick myself]
  $onlyIf[$isMentioned[$mentioned[1]]==true;You need to mention someone you want me to kick]
  $onlyIf[$hasPerms[$guildID;$authorID;kick]==true;You don't have \`KICK\` permisions]
- $onlyBotPerms[kick;I don't have \`KICK\` permissions]`
+ $onlyBotPerms[kick;I don't have \`KICK\` permissions] $suppressErrors`
 }
