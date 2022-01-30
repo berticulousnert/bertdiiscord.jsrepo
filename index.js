@@ -177,6 +177,16 @@ $title[1;Unban] $description[1;Unban | Case ] $addfield[1; Responsible moderator
 `
 })
 
+bot.onGuildLeave({
+  name: "884959027962982466",
+  code: `
+  $resetServerVar[prefix] I left $servername and i have reset the data.`
+})
+
+bot.onGuildJoin({
+  name: "884959027962982465",
+  code: `I joined  server $serverName $getServerInvite`
+})
 
 
 
