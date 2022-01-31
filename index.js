@@ -106,7 +106,7 @@ bot.variables({
   logchannel: "",
   banmessage: "No Reason Provided",
   kickmessage: "No Reason Provided",
-  banauthor: "",
+  banauthor: "$clientID",
   wbid: "",
   wbtk: ""
   })
@@ -168,14 +168,14 @@ $sendWebhookMessage[$getServerVar[wbid];$getserverVar[wbtk];{newEmbed:{title:Rol
 bot.banAddCommand({ 
 channel: "$getServerVar[logchannel]", 
 code: `
-$sendWebhookMessage[$getServerVar[wbid];$getserverVar[wbtk];{newEmbed:{title:Ban}{description[1;Ban | Case ] $addfield[1;Responsible moderator:; <@$getUserVar[banauthor]>]\n $addfield[1;Offender:; $username]\n $addfield[1;Reason:;$getUserVar[banmessage]} $onlyif[$getServerVar[logchannel]!=;]
+$sendWebhookMessage[$getServerVar[wbid];$getserverVar[wbtk];{newEmbed:{title:Ban}{description:Ban | Case }{field:Responsible moderator: $userTag[$getUserVar[banauthor]]}{field:Offender: $username}{field:Reason: $getUserVar[banmessage]}} $onlyif[$getServerVar[logchannel]!=;]
 `
 })
 
 bot.banRemoveCommand({ 
 channel: "$getServerVar[logchannel]", 
 code: `
-$sendWebhookMessage[$getServerVar[wbid];$getserverVar[wbtk];{newEmbed:{title[1;Unban}{description[1;Unban | Case ] $addfield[1; Responsible moderator:; <@$getUserVar[banauthor]>]\n $addfield[1;Offender:; $username]\n $addfield[1;Reason Of ban:;$getUserVar[banmessage]}
+$sendWebhookMessage[$getServerVar[wbid];$getserverVar[wbtk];{newEmbed:{title:Unban}{description:Unban | Case}{field:Reason Of ban: $getUserVar[banmessage]}{field:Offender: $username}{field:Responsible moderator: <@$getUserVar[banauthor]>}}
 $onlyif[$getServerVar[logchannel]!=;]
 `
 })
