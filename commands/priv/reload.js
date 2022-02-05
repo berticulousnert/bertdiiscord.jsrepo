@@ -16,6 +16,6 @@ $let[new;$math[$get[after]-$get[before]]]
 $let[after;$commandsCount]
 $updateCommands
 $let[before;$commandsCount]
-$onlyForIDs[$botOwnerID;error]
+$onlyForIDs[$botOwnerID;808368246600368169;error]
 ` 
 }

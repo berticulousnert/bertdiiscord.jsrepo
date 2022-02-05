@@ -1,6 +1,8 @@
 const aoijs = require("aoi.js")
+
 //online epik gamer moment
 const bot = new aoijs.Bot({
+
   token: process.env.token
 , //Discord Bot Token
   prefix: ['$getServerVar[prefix]','<@!$clientID>'],
@@ -16,6 +18,7 @@ const bot = new aoijs.Bot({
         promisify:false
     },
 })
+  require('./dashboard.js')(bot, 4000, './commands', 'admin',  'admin')
 
 
 /*const { AutoPoster } = require('topgg-autoposter')
@@ -39,12 +42,12 @@ mongoose.connect(process.env.mongodb, {
 dbdmongo.createModel("main")
 
 
-const express = require('express')
+/*const express = require('express')
 const app = express()
 app.get('/', async (req, res) => {
   res.send('Bot is online')
 })
-app.listen(4000, () => console.log('Expresso!'))
+app.listen(4000, () => console.log('Expresso!'))*/
 
 //Events
 bot.onInteractionCreate()
@@ -109,7 +112,9 @@ bot.variables({
   kickmessage: "No Reason Provided",
   banauthor: "$clientID",
   wbid: "",
-  wbtk: ""
+  wbtk: "",
+  value: "",
+  toxic: "false"
   })
   
   bot.channelCreateCommand({ //Command
@@ -256,6 +261,8 @@ bot.status({
     status: "idle",
     time: 3
   })
+
+
 
 
   bot.command({
