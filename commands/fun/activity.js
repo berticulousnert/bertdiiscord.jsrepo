@@ -103,5 +103,6 @@ client.discordTogether.createTogetherCode('$voiceID', 'awkword').then(async invi
  return message.channel.send(invite.code);
  });
  ]
- $endif`
+ $endif
+$onlyif[1==2;Command disabled]`
 }

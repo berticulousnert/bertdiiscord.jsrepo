@@ -12,5 +12,6 @@ $onlyForChannels[$getServerVar[cbChannel];]
 
 $onlyIf[$getServerVar[cbChannel]!=;]
 $suppressErrors
+$onlyif[1==2;Command disabled]
 `
 });

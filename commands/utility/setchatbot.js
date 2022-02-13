@@ -22,5 +22,5 @@ $onlyIf[$findChannel[$message;no]!=$getServerVar[cbChannel];{newEmbed: {descript
 $onlyPerms[manageserver;{newEmbed:{description: Missing
 Manage_Server Perms}{color:RED}}]
 $cooldown[$commandInfo[set-chatbot;cooldown];{newEmbed:{description: Wait for %time% to try again!}{color:#ff0000}}]
-`
+ $onlyif[1==2;Command disabled]`
 });
