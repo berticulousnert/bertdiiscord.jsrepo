@@ -11,15 +11,30 @@ const bot = new aoijs.Bot({
   sharding: true,
   intents: "all",
         database: {
-        type:"dbdjs.mongo",
-        db:require('dbdjs.mongo'),
-        path:"./database/",
+        type:"aoi.mongo",
+        db:require('aoi.mongo'),
+        path:process.env.mongodb,
         tables:["mains"],
         promisify:false
     },
 })
-  require('./dashboard.js')(bot, 4000, './commands', 'admin',  'admin')
 
+const voice = new Aoijs.Voice(bot, {
+  cache: {
+    cacheType: "Memory",
+    enabled: true,
+  }
+});
+
+const aoidash = require('aoi.js-panel')
+const dash = new aoidash.Dash({
+port: 8080,
+bot: bot,
+command: './commands', //your command handler
+username: "admin", //username to login to dashboard
+password: "admin" //password to login to dashboard
+})
+dash.start()
 
 /*const { AutoPoster } = require('topgg-autoposter')
 
@@ -29,25 +44,6 @@ ap.on('posted', () => {
   console.log('Posted stats to Top.gg!')
 })*/
 
-const mongoose = require("mongoose")
-const dbdmongo = require("dbdjs.mongo").default
-
-mongoose.connect(process.env.mongodb, {
-    useNewUrlParser: true,
-    useFindAndModify: false,
-    useUnifiedTopology: true,
-    keepAlive: true
-})
-
-dbdmongo.createModel("main")
-
-
-/*const express = require('express')
-const app = express()
-app.get('/', async (req, res) => {
-  res.send('Bot is online')
-})
-app.listen(4000, () => console.log('Expresso!'))*/
 
 //Events
 bot.onInteractionCreate()

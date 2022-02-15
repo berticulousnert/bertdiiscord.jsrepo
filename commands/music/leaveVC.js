@@ -1,8 +1,11 @@
-module.exports = ({
-    name: "leave",
-    aliases: ['dc'],
-    code: `$suppressErrors[Connection Error] $lavalinkExecute[disconnect] Successfully disconnected from <#$voiceid[$clientid]>
-    $onlyif[$authorID==$botOwnerID;Command disabled until further noticed.]
-    $onlyif[$voiceid[$clientid]!=;I am not connected to any Voice Channel.]
-    $onlyIf[$voiceid[$authorid]!=; Please join a Voice Channel and use this command.]`
-})
+module.exports = [{
+name: "leave",
+aliases: "dc",
+ code: `
+$leaveVC
+
+$onlyIf[$voiceID[$clientID]!=;\`❌ I'm already disconnected.\`]
+$onlyIf[$voiceID[$authorID]==$voiceID[$clientID];\`❌ You are not in my VC.\`]
+$onlyIf[$voiceID[$authorID]!=;\`❌ Please join my VC \`]
+$onlyForIDs[$botOwnerID;]`
+}]
