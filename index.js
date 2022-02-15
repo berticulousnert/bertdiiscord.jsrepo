@@ -19,7 +19,7 @@ const bot = new aoijs.Bot({
     },
 })
 
-const voice = new Aoijs.Voice(bot, {
+const voice = new aoijs.Voice(bot, {
   cache: {
     cacheType: "Memory",
     enabled: true,
