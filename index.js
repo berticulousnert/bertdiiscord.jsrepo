@@ -19,12 +19,6 @@ const bot = new aoijs.Bot({
     },
 })
 
-const voice = new aoijs.Voice(bot, {
-  cache: {
-    cacheType: "Memory",
-    enabled: true,
-  }
-});
 
 const aoidash = require('aoi.js-panel')
 const dash = new aoidash.Dash({
