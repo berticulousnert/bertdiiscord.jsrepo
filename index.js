@@ -28,13 +28,13 @@ ap.on('posted', () => {
   console.log('Posted stats to Top.gg!')
 })*/
 
-const voice = new aoijs.Voice(bot, {
+/*const voice = new aoijs.Voice(bot, {
   cache: {
     cacheType: "Memory",
     enabled: true,
   }
 });
-
+*/
 //Events
 bot.onInteractionCreate()
 bot.onJoin()
