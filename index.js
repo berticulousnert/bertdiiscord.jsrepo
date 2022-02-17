@@ -20,6 +20,13 @@ const bot = new aoijs.Bot({
 })
 
 
+const voice = new aoijs.Voice(bot, {
+  cache: {
+    cacheType: "Memory",
+    enabled: true,
+  }
+});
+
 /*const { AutoPoster } = require('topgg-autoposter')
 
 const ap = AutoPoster(process.env.topggt, bot)
