@@ -20,16 +20,6 @@ const bot = new aoijs.Bot({
 })
 
 
-const aoidash = require('aoi.js-panel')
-const dash = new aoidash.Dash({
-port: 8080,
-bot: bot,
-command: './commands', //your command handler
-username: "admin", //username to login to dashboard
-password: "admin" //password to login to dashboard
-})
-dash.start()
-
 /*const { AutoPoster } = require('topgg-autoposter')
 
 const ap = AutoPoster(process.env.topggt, bot)
