@@ -11,7 +11,6 @@ $onlyIf[$checkContains[$message;nigger;Nigger;Nigga;nigga;@everyone;@here]==fals
 $onlyForChannels[$getServerVar[cbChannel];]
 
 $suppressErrors
-$onlyif[1==2;Command disabled]
 $onlyIf[$getServerVar[cbChannel]!=;]
 `
 });

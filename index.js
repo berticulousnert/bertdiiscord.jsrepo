@@ -20,12 +20,6 @@ const bot = new aoijs.Bot({
 })
 
 
-const voice = new aoijs.Voice(bot, {
-  cache: {
-    cacheType: "Memory",
-    enabled: true,
-  }
-});
 
 /*const { AutoPoster } = require('topgg-autoposter')
 
@@ -179,21 +173,6 @@ $onlyif[$getServerVar[logchannel]!=;] $suppressErrors[Error]
 `
 })
 
-bot.onGuildLeave({
-  name: "884959027962982466",
-  code: `
-  $resetServerVar[prefix] I left $servername and i have reset the data.`
-})
-
-bot.onGuildJoin({
-  name: "884959027962982465",
-  code: `I joined  server $serverName $getServerInvite`
-})
-
-
-
-
-
 bot.functionManager.createCustomFunction({
 name: "$transcript",
 type: "djs",
@@ -225,14 +204,6 @@ $textSplit[$getVar[bl]; ]
  `
  })
 
- bot.functionErrorCommand({
-channel: "884959027962982467",
-code: `Error: $handleError[error]
-Name: $handleError[name]
-Function: $handleError[function]`
-})
-
-
 
 bot.status({
     text: "$allMembersCount members",
@@ -250,6 +221,13 @@ bot.status({
 
   bot.status({
     text: "Prefix: .",
+    type: "WATCHING",
+    status: "idle",
+    time: 3
+  })
+
+ bot.status({
+    text: "around 70% complete",
     type: "WATCHING",
     status: "idle",
     time: 3
