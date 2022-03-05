@@ -8,7 +8,7 @@ Version: **$jsonRequest[https://api.mcsrvstat.us/1/$message[1];version]**,
 Protocol Version: **$jsonRequest[https://api.mcsrvstat.us/1/$message[1];protocol]**.]
 $color[1;99b898]
 $title[1;Server Online]
-$footer[1;Made by MINECRAFT!]
+$footer[1;Deez]
 $onlyIf[$jsonRequest[https://api.mcsrvstat.us/1/$message[1];hostname]!=undefined;{title:Server Online} {color:99b898} {description:Server Numerical IP: **$jsonRequest[https://api.mcsrvstat.us/1/$message[1];ip]:$jsonRequest[https://api.mcsrvstat.us/1/$message[1];port]**,
 Players Online: **$jsonRequest[https://api.mcsrvstat.us/1/$message[1];players.online]** / **$jsonRequest[https://api.mcsrvstat.us/1/$message[1];players.max]**,
 Version: **$jsonRequest[https://api.mcsrvstat.us/1/$message[1];version]**,

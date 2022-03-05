@@ -1,7 +1,7 @@
 module.exports = {
   name: "resetprefix",
-  code: `$resetServerVar[prefix]
+  code: `
   Prefix reseted to \`.\`
-  $onlyPerms[admin;]
- $onlyIf[$getUserVar[command;$commandName]!=disabled;Command disabled]`
-}
+  $SetServerVar[prefix;.]
+  $onlyPerms[admin;Hello non admin get away]
+`}

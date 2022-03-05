@@ -3,7 +3,7 @@ const aoijs = require("aoi.js")
 //online epik gamer moment
 const bot = new aoijs.Bot({
 
-  token: process.env.token
+  token: procces.env.token
 , //Discord Bot Token
   prefix: ['$getServerVar[prefix]','<@!$clientID>'],
   shardAmmount: 200,
@@ -13,7 +13,7 @@ const bot = new aoijs.Bot({
         database: {
         type:"aoi.mongo",
         db:require('aoi.mongo'),
-        path:process.env.mongodb,
+        path: process.env.mongodb,
         tables:["mains"],
         promisify:false
     },
@@ -29,13 +29,8 @@ ap.on('posted', () => {
   console.log('Posted stats to Top.gg!')
 })*/
 
-/*const voice = new aoijs.Voice(bot, {
-  cache: {
-    cacheType: "Memory",
-    enabled: true,
-  }
-});
-*/
+
+
 //Events
 bot.onInteractionCreate()
 bot.onJoin()
@@ -199,7 +194,7 @@ code: d.util.setCode(data)
   bot.readyCommand({
 channel: "934646878438576178",
 code: ` $blacklist[globalUser;$splitText[1]] 
-$blacklistError[globalUser;Imagine trying to use bert command] black listed all the nessary ppl
+$blacklistError[globalUser;Imagine trying to use bert command] 
 $textSplit[$getVar[bl]; ]
  `
  })
@@ -232,34 +227,7 @@ bot.status({
     status: "idle",
     time: 3
   })
-
-
-
-
-  bot.command({
-    name: "backup",
-    code: `$forEachGuildChannel[1;{};backup;] $onlyif[$authorID==$botownerID;Owner only for now]`
-})
-
-bot.awaitedCommand({
-name: "backup",
-code: `Backup has been set $setServerVar[channelbackupname;$channel[$channellID;name]] $setServerVar[channelbackuptopic;$channel[$channellID;topic]] $setServerVar[channelbackupposition;$channel[$channellID;position]] $setServerVar[channelbackuptype;$channel[$channelIID;type]] $setServerVar[categorubackupid;$channelCategoryID[$channellID]]`
-});
-
-
-//$channelCategoryID[channel ID (Optional)]
-
-bot.awaitedCommand({
-name: "backup-restore",
-code: `Set tight while i fix the server for someone lazy $djsEval[channel.delete()]`
-});
-
-//$djsEval[message.channel.delete()]
-
-  bot.command({
-    name: "backup-restore",
-    code: `Set tight while i fix the server for someone lazy $onlyif[$authorID==$botownerID;Owner only for now] $forEachGuildChannel[1;{};backup-restore;]`
-  });
+;
 
   //$forEachGuildChannel[1;{};backup-restore] 
 
@@ -280,21 +248,3 @@ bot.command({
   $color[1;RANDOM]
   $footer[1;Support server| https://discord.gg/74FbuXsBHb]`
 })
-
-
-
-bot.command({
- name: "roleall",
- code: `$ForEachMember[1;{};roleall]
-$onlyPerms[admin;You must have admin perms to use this command]
-$setServerVar[roleall;$findRole[$message[1]]]
-$argsCheck[1;What should i role?] `
-})
-
-bot.awaitedCommand({
- name: "roleall",
- code: `$giveRoles[$guildid;$guildID;$getServerVar[roleall]] $onlyBotPerms[admin;Bozo i don't have manage roles perms.] All memebers has been rick rolled Oops i ment roled `
-})
-
-//`All memebers has been rick rolled Oops i ment roled  $giveRoles[$guildid;$authorID;$getServerVar[roleall]] $onlyBotPerms[admin;Bozo i don't have manage roles perms.]
-
