@@ -3,7 +3,7 @@ const aoijs = require("aoi.js")
 //online epik gamer moment
 const bot = new aoijs.Bot({
 
-  token: procces.env.token,
+  token: process.env.token,
 , //Discord Bot Token
   prefix: ['$getServerVar[prefix]','<@!$clientID>'],
   shardAmmount: 200,
