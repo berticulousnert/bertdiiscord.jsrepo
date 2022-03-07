@@ -82,7 +82,7 @@ bot.variables({
    host: "",
    win: "",
    date: "",
-   msgs: "",
+   msgs: "0^0^0^0^0^0^0^0^0^0",
    time: "",
    prize: "",
    channelbackupname: "",
