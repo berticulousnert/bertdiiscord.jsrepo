@@ -57,8 +57,8 @@ loader.load(bot.cmd, "./commands/")
 const Lavalink = new aoijs.Lavalink(bot);
 
 Lavalink.addNode({
- url: "lava.link:80",
- password: "neo",
+ url: "node2.ultimatesrv.com:25568",
+ password: "youshallnotpass",
  name: "Music",
  secure: false,
  })
@@ -242,6 +242,7 @@ $textSplit[$message;/]
 $color[1;RANDOM]
 $suppressErrors[**⛔ Could not find message**]`
 })
+
 
 bot.command({
   name: "support",

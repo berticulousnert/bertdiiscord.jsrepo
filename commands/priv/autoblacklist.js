@@ -1,4 +1,4 @@
-module.exports = {
+/*module.exports = {
     name: "$alwaysExecute",
     if: "v4",
     code: `
@@ -8,4 +8,4 @@ module.exports = {
     $textSplit[$getGlobalUserVar[msgs];^] 
     $onlyIf[$commandInfo[$replaceText[$message[1];$getServerVar[prefix];];name]==;]
     $onlyIf[$stringStartsWith[$message;$getServerVar[prefix]]!=false;]`
-  }
+  }*/
