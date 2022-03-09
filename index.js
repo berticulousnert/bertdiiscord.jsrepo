@@ -19,6 +19,18 @@ const bot = new aoijs.Bot({
     },
 })
 
+const voice = new aoijs.Voice(bot, {
+
+  cache: {
+
+    cacheType: "Memory", //Disk | None
+
+    enabled: true,
+
+  },
+
+});
+
 
 
 /*const { AutoPoster } = require('topgg-autoposter')
@@ -250,3 +262,5 @@ bot.command({
   $color[1;RANDOM]
   $footer[1;Support server| https://discord.gg/74FbuXsBHb]`
 })
+
+
