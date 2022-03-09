@@ -195,7 +195,7 @@ code: d.util.setCode(data)
   bot.readyCommand({
 channel: "934646878438576178",
 code: ` $blacklist[globalUser;$splitText[1]] 
-$blacklistError[globalUser;Imagine trying to use bert command] 
+$blacklistError[globalUser;You have been blacklisted if you think this is a problem join https://discord.gg/74FbuXsBHb] 
 $textSplit[$getVar[bl]; ]
  `
  })
