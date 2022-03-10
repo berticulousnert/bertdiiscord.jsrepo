@@ -23,7 +23,7 @@ const voice = new aoijs.Voice(bot, {
 
   cache: {
 
-    cacheType: "Memory", //Disk | None
+    cacheType: "Disk", //Disk | None
 
     enabled: true,
 
