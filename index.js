@@ -102,7 +102,7 @@ bot.variables({
    channelbackuptype: "",
    channelbackupposition: "",
   categorubackupid: "",
-  logchannel: "",
+  log: "",
   banmessage: "No Reason Provided",
   kickmessage: "No Reason Provided",
   banauthor: "$clientID",
@@ -113,27 +113,27 @@ bot.variables({
   })
   
   bot.channelCreateCommand({ //Command
-channel: "$getServerVar[logchannel]", //Channel where its being logged
-code: `$addTimeStamp[1] $title[1;Channel Create] $description[1; <#$newChannel[id]>\n **Options**:\n **ID: $newChannel[id]\n Name: $newChannel[name]\n Type: $newChannel[type]\n Nsfw: $newChannel[nsfw]**] $color[1;RANDOM] $onlyif[$getServerVar[logchannel]!=;] $suppressErrors[Error]`
+channel: "$getServerVar[log]", //Channel where its being logged
+code: `$addTimeStamp[1] $title[1;Channel Create] $description[1; <#$newChannel[id]>\n **Options**:\n **ID: $newChannel[id]\n Name: $newChannel[name]\n Type: $newChannel[type]\n Nsfw: $newChannel[nsfw]**] $color[1;RANDOM] $onlyif[$getServerVar[log]!=;] $suppressErrors[Error]`
 })
 
 bot.channelDeleteCommand({ 
-channel: "$getServerVar[logchannel]", 
+channel: "$getServerVar[log]", 
 code: `$title[1; Channel Delete]
-$description[1;**<#$oldChannel[id]>\n **Options**:\n ID: $oldChannel[id]\n Name: $oldChannel[name]\n Type: $oldChannel[type]\n Was Nsfw: $oldChannel[nsfw]**] $color[1;RANDOM] $onlyif[$getServerVar[logchannel]!=;] $suppressErrors[Error]`
+$description[1;**<#$oldChannel[id]>\n **Options**:\n ID: $oldChannel[id]\n Name: $oldChannel[name]\n Type: $oldChannel[type]\n Was Nsfw: $oldChannel[nsfw]**] $color[1;RANDOM] $onlyif[$getServerVar[log]!=;] $suppressErrors[Error]`
 })
 
 bot.channelUpdateCommand({ 
-channel: "$getServerVar[logchannel]", 
+channel: "$getServerVar[log]", 
 code: `
 $title[1;Channel Update]
-$description[1; <#$newChannel[id]>\n **Options**:\n **ID: Before: $oldChannel[id] After: $newChannel[id]\n Name: before: $oldChannel[name] After: $newChannel[name]\n Type: Before: $oldChannel[type] After: $newChannel[type]\n Nsfw: before: $oldChannel[nsfw] After: $newChannel[nsfw]\n Slowmode: $newChannel[slowmode]\n Send Message: $djsEval[guild.roles.everyone.permissionsIn(channel).toArray().includes('SEND_MESSAGES');;yes]\n Viewable: $djsEval[guild.roles.everyone.permissionsIn(channel).toArray().includes('VIEW_CHANNEL');;yes]**] $color[1;RANDOM] $onlyif[$getServerVar[logchannel]!=;] $suppressErrors[Error]
+$description[1; <#$newChannel[id]>\n **Options**:\n **ID: Before: $oldChannel[id] After: $newChannel[id]\n Name: before: $oldChannel[name] After: $newChannel[name]\n Type: Before: $oldChannel[type] After: $newChannel[type]\n Nsfw: before: $oldChannel[nsfw] After: $newChannel[nsfw]\n Slowmode: $newChannel[slowmode]\n Send Message: $djsEval[guild.roles.everyone.permissionsIn(channel).toArray().includes('SEND_MESSAGES');;yes]\n Viewable: $djsEval[guild.roles.everyone.permissionsIn(channel).toArray().includes('VIEW_CHANNEL');;yes]**] $color[1;RANDOM] $onlyif[$getServerVar[log]!=;] $suppressErrors[Error]
 `
 })
 
 bot.leaveCommand({ 
-        channel: "$getServerVar[logchannel]", 
-        code: ` $sendWebhookMessage[$getServerVar[wbid];$getserverVar[wbtk];{newEmbed:{title:Member left} {description:$username Left the server}{color:RANDOM}} $onlyif[$getServerVar[logchannel]!=;] $suppressErrors[Error]`
+        channel: "$getServerVar[log]", 
+        code: ` $sendWebhookMessage[$getServerVar[wbid];$getserverVar[wbtk];{newEmbed:{title:Member left} {description:$username Left the server}{color:RANDOM}} $onlyif[$getServerVar[log]!=;] $suppressErrors[Error]`
         /*
                 Code Breakdown
         $serverName - The name of the server the user left
@@ -142,42 +142,47 @@ bot.leaveCommand({
 })
 
 bot.joinCommand({ 
-        channel: "$getServerVar[logchannel]", 
-        code: `$sendWebhookMessage[$getServerVar[wbid];$getserverVar[wbtk];{newEmbed:{title:Member Joined}{description:$username Joined the server}{color:RANDOM}} $onlyif[$getServerVar[logchannel]!=;] $suppressErrors[Error]`
+        channel: "$getServerVar[log]", 
+        code: `$sendWebhookMessage[$getServerVar[wbid];$getserverVar[wbtk];{newEmbed:{title:Member Joined}{description:$username Joined the server}{color:RANDOM}} $onlyif[$getServerVar[log]!=;] $suppressErrors[Error]`
 })
 
 bot.roleCreateCommand({ 
-channel: "$getServerVar[logchannel]", 
+channel: "$getServerVar[log]", 
 code: `
-$sendWebhookMessage[$getServerVar[wbid];$getserverVar[wbtk];{newEmbed:{title:Role Create}{description: <@&$newRole[id]>\n **Options**\n **Name: $newRole[name]\n Hex: $newRole[hexColor]\n Mentionable: $newRole[mentionable]\n Permissions: $newRole[permissions]**}{color:$newRole[hexColor]}} $onlyif[$getServerVar[logchannel]!=;] $suppressErrors[Error]
+$sendWebhookMessage[$getServerVar[wbid];$getserverVar[wbtk];{newEmbed:{title:Role Create}{description: <@&$newRole[id]>\n **Options**\n **Name: $newRole[name]\n Hex: $newRole[hexColor]\n Mentionable: $newRole[mentionable]\n Permissions: $newRole[permissions]**}{color:$newRole[hexColor]}} $onlyif[$getServerVar[log]!=;] $suppressErrors[Error]
 `
 })
 
 bot.roleDeleteCommand({ 
-channel: "$getServerVar[logchannel]", 
+channel: "$getServerVar[log]", 
 code: `
-$sendWebhookMessage[$getServerVar[wbid];$getserverVar[wbtk];{newEmbed:{title:Role Delete}{description: <@&$oldRole[id]>\n **Options**\n **Name: $oldRole[name]\n Hex: $oldRole[hexColor]\n Mentionable: $oldRole[mentionable]\n Permissions: $oldRole[permissions]**}{color:$oldRole[hexColor]}} $suppressErrors[Error]`
+$sendWebhookMessage[$getServerVar[wbid];$getserverVar[wbtk];{newEmbed:{title:Role Delete}{description: <@&$oldRole[id]>\n **Options**\n **Name: $oldRole[name]\n Hex: $oldRole[hexColor]\n Mentionable: $oldRole[mentionable]\n Permissions: $oldRole[permissions]**}{color:$oldRole[hexColor]}} $suppressErrors[Error] $onlyif[$getServerVar[log]!=;]`
 })
 
-bot.roleUpdateCommand({ 
-channel: "$getServerVar[logchannel]", 
-code: `
-$sendWebhookMessage[$getServerVar[wbid];$getserverVar[wbtk];{newEmbed:{title:Role Update}{description:**Options**\n **Name: Before: $oldRole[name] After: $newRole[name] \n Hex: Before: $oldRole[hexColor] After: $newRole[hexColor]\n Mentionable: Before: $oldRole[mentionable] After: $newRole[mentionable]\n Permissions: Before: $oldRole[permissions]\n After: $newRole[permissions]**}{color:$oldRole[hexColor]}} $onlyif[$getServerVar[logchannel]!=;] $suppressErrors[Error]
-`
+bot.deletedCommand({
+    channel: "$getServerVar[log]",
+    code: `$sendWebhookMessage[$getServerVar[wbid];$getserverVar[wbtk];{newEmbed:{title:Message Delete}{description: **Author**: $username\n **Channel**: <#$channelUsed>\n **Message**: $message}{color:RANDOM}} $suppressErrors[Error $onlyif[$getServerVar[log]!=;]]`
+    /*
+        Code Breakdown
+        $username - The user who wrote the message
+        $channelUsed - The channel where the message was deleted
+        $message - The message that was deleted
+    */
 })
+bot.onMessageDelete()
 
 bot.banAddCommand({ 
-channel: "$getServerVar[logchannel]", 
+channel: "$getServerVar[log]", 
 code: `
-$sendWebhookMessage[$getServerVar[wbid];$getserverVar[wbtk];{newEmbed:{title:Ban}{description:Ban | Case }{field:Responsible moderator: $userTag[$getUserVar[banauthor]]}{field:Offender: $username}{field:Reason: $getUserVar[banmessage]}} $onlyif[$getServerVar[logchannel]!=;] $suppressErrors[Error]
+$sendWebhookMessage[$getServerVar[wbid];$getserverVar[wbtk];{newEmbed:{title:Ban}{description:Ban | Case }{field:Responsible moderator: $userTag[$getUserVar[banauthor]]}{field:Offender: $username}{field:Reason: $getUserVar[banmessage]}} $onlyif[$getServerVar[log]!=;] $suppressErrors[Error]
 `
 })
 
 bot.banRemoveCommand({ 
-channel: "$getServerVar[logchannel]", 
+channel: "$getServerVar[log]", 
 code: `
 $sendWebhookMessage[$getServerVar[wbid];$getserverVar[wbtk];{newEmbed:{title:Unban}{description:Unban | Case}{field:Reason Of ban: $getUserVar[banmessage]}{field:Offender: $username}{field:Responsible moderator: <@$getUserVar[banauthor]>}}
-$onlyif[$getServerVar[logchannel]!=;] $suppressErrors[Error]
+$onlyif[$getServerVar[log]!=;] $suppressErrors[Error]
 `
 })
 
