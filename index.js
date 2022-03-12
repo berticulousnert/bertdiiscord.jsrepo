@@ -19,18 +19,6 @@ const bot = new aoijs.Bot({
     },
 })
 
-const voice = new aoijs.Voice(bot, {
-
-  cache: {
-
-    cacheType: "Memory", //Disk | None
-
-    enabled: true,
-
-  },
-
-});
-
 
 
 /*const { AutoPoster } = require('topgg-autoposter')
