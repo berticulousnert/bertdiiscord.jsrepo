@@ -4,7 +4,7 @@
   "main": "index.js",
   "engines": {
     "node": "v16.x",
-    "npm": "v7.20.3"
+    "npm": "latest"
   },
   "scripts": {
     "start": "node index.js"
