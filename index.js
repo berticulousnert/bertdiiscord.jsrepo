@@ -1,10 +1,9 @@
 const aoijs = require("aoi.js")
+const fs = require("fs")
 
 //online epik gamer moment
 const bot = new aoijs.Bot({
-
-  token: process.env.token
-, //Discord Bot Token
+token: process.env.token, 
   prefix: ['$getServerVar[prefix]','<@!$clientID>'],
   shardAmmount: 200,
   errorMessage: ["An Error Occurred"],
@@ -21,14 +20,37 @@ const bot = new aoijs.Bot({
 
 
 
-/*const { AutoPoster } = require('topgg-autoposter')
+
+const { AutoPoster } = require('topgg-autoposter')
 
 const ap = AutoPoster(process.env.topggt, bot)
 
 ap.on('posted', () => {
   console.log('Posted stats to Top.gg!')
-})*/
+})
 
+const express = require('express');
+
+const app = express()
+app.get('/', async (req, res) => {
+ res.sendFile(__dirname + '/dashboard.js');
+})
+
+
+
+app.listen(3000, () => console.log('Expresso!'))
+
+const voice = new aoijs.Voice(bot, {
+
+  cache: {
+
+    cacheType: "Memory", //Disk | None
+
+    enabled: true,
+
+  },
+
+});
 
 
 //Events
