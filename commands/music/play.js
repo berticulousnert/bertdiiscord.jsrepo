@@ -39,7 +39,6 @@ $onlyIf[$voiceID[$authorID]==$voiceID[$clientID]; You are connected somewhere el
 $onlyIf[$voiceID[$clientID]!=; Please use the "join" command first.]
 
 
-
 $onlyIf[$voiceID[$authorID]!=; Please join a VC.]
 
 `
